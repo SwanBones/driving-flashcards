@@ -15,8 +15,13 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ddd;
-    --foreground: #ededed;
+    --foreground: #555;
   }
+}
+
+h1 {
+  font-weight: bold;
+  font-size: large;
 }
 
 body {

@@ -1,13 +1,20 @@
+export type Question = {
+  id: number;
+  type: "VERIF" | "SECUR" | "FirstAid";
+  question: string;
+  answer: string;
+  checked?: boolean;
+};
 export const questions = [
   {
     id: 1,
-    type: "VE",
+    type: "VERIF",
     question: "Montrez la commande de réglage de hauteur des feux.",
     answer: "Dispositif situé en général à gauche du volant.",
   },
   {
     id: 2,
-    type: "QSER",
+    type: "SECUR",
     question: "Pourquoi doit-on régler la hauteur des feux ?",
     answer: "Pour ne pas éblouir les autres usagers.",
   },
@@ -21,14 +28,14 @@ export const questions = [
   },
   {
     id: 4,
-    type: "VE",
+    type: "VERIF",
     question: "Montrez où s'effectue le remplissage du produit lave-glace.",
     answer:
       "Le candidat ouvre le capot et montre le bocal. Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
   },
   {
     id: 5,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Pourquoi est-il préférable d'utiliser un liquide spécial en hiver ?",
     answer: "Pour éviter le gel du liquide.",
@@ -43,7 +50,7 @@ export const questions = [
   },
   {
     id: 7,
-    type: "VE",
+    type: "VERIF",
     question:
       "Mettez le rétroviseur intérieur en position \"nuit\". Si le rétroviseur de l'accompagnateur gène la manipulation du dispositif, l'explication suffit.",
     answer:
@@ -51,7 +58,7 @@ export const questions = [
   },
   {
     id: 8,
-    type: "QSER",
+    type: "SECUR",
     question: "Quel est l'intérêt de la position nuit ?",
     answer: "Ne pas être ébloui par les feux du véhicule suiveur.",
   },
@@ -65,13 +72,13 @@ export const questions = [
   },
   {
     id: 10,
-    type: "VE",
+    type: "VERIF",
     question: "Contrôlez l'état du flanc sur l'un des pneumatiques.",
     answer: "En bon état (toute anomalie doit être signalée).",
   },
   {
     id: 11,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Citez un endroit où l'on peut trouver les pressions préconisées pour les pneumatiques ?",
     answer:
@@ -87,14 +94,14 @@ export const questions = [
   },
   {
     id: 13,
-    type: "VE",
+    type: "VERIF",
     question:
       "Faites fonctionner les essuie-glaces avants du véhicule sur la position la plus rapide.",
     answer: "",
   },
   {
     id: 14,
-    type: "QSER",
+    type: "SECUR",
     question: "Comment détecter leur usure en circulation ?",
     answer:
       "En cas de pluie, lorsqu'ils laissent des traces sur le pare brise.",
@@ -108,14 +115,14 @@ export const questions = [
   },
   {
     id: 16,
-    type: "VE",
+    type: "VERIF",
     question: "Vérifiez l'état et la propreté des plaques d'immatriculation.",
     answer:
       "Vérification des plaques à l'avant et à l'arrière, propres et en bon état (toute anomalie doit être signalée).",
   },
   {
     id: 17,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelles sont les précautions à prendre en cas d'installation d'un porte vélo ?",
     answer: "La plaque d'immatriculation et les feux doivent être visibles.",
@@ -129,14 +136,14 @@ export const questions = [
   },
   {
     id: 19,
-    type: "VE",
+    type: "VERIF",
     question: "Vérifiez la présence du gilet de haute visibilité.",
     answer:
       'Le candidat doit indiquer où il se trouve sans obligation de le sortir. Le terme "gilet jaune" peut être utilisé si le candidat ne comprend pas.',
   },
   {
     id: 20,
-    type: "QSER",
+    type: "SECUR",
     question:
       "En cas de panne ou d'accident, quel autre accessoire de sécurité est obligatoire ?",
     answer: "Le triangle de pré-signalisation.",
@@ -151,7 +158,7 @@ export const questions = [
   },
   {
     id: 22,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez où s'effectue le contrôle du niveau du liquide de frein.",
     answer:
@@ -159,7 +166,7 @@ export const questions = [
   },
   {
     id: 23,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelle est la conséquence d'un niveau insuffisant du liquide de frein ?",
     answer: "Une perte d'efficacité du freinage.",
@@ -174,14 +181,14 @@ export const questions = [
   },
   {
     id: 25,
-    type: "VE",
+    type: "VERIF",
     question:
       "Vérifiez la présence du certificat d'immatriculation du véhicule (ou carte grise).",
     answer: "La photocopie est acceptée.",
   },
   {
     id: 26,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quels sont les deux autres documents obligatoires à présenter en cas de contrôle par les forces de l'ordre ?",
     answer: "L'attestation d'assurance et le permis de conduire.",
@@ -196,13 +203,13 @@ export const questions = [
   },
   {
     id: 28,
-    type: "VE",
+    type: "VERIF",
     question: "Contrôlez l'état de tous les balais d'essuie-glace du véhicule.",
     answer: "",
   },
   {
     id: 29,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quel est le risque de circuler avec des balais d'essuie glace défectueux ?",
     answer: "Une mauvaise visibilité en cas d'intempéries.",
@@ -216,13 +223,13 @@ export const questions = [
   },
   {
     id: 31,
-    type: "VE",
+    type: "VERIF",
     question: "Montrez l'indicateur de niveau de carburant.",
     answer: "",
   },
   {
     id: 32,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelles sont les précautions à prendre lors du remplissage du réservoir ?",
     answer: "Arrêter le moteur, ne pas fumer, ne pas téléphoner.",
@@ -237,7 +244,7 @@ export const questions = [
   },
   {
     id: 34,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez où s'effectue le remplissage du liquide de refroidissement.",
     answer:
@@ -245,7 +252,7 @@ export const questions = [
   },
   {
     id: 35,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quel est le danger si l'on complète le niveau du liquide lorsque le moteur est chaud ?",
     answer: "Un risque de brûlure.",
@@ -259,14 +266,14 @@ export const questions = [
   },
   {
     id: 37,
-    type: "VE",
+    type: "VERIF",
     question:
       "Actionnez le dégivrage de la lunette arrière et montrez le voyant ou le repère correspondant.",
     answer: "",
   },
   {
     id: 38,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelle peut être la conséquence d'une panne de dégivrage de la lunette arrière ?",
     answer: "Une insuffisance ou une absence de visibilité vers l'arrière.",
@@ -281,7 +288,7 @@ export const questions = [
   },
   {
     id: 40,
-    type: "VE",
+    type: "VERIF",
     question:
       "Contrôlez l'état, la propreté et le fonctionnement de tous les clignotants côté trottoir.",
     answer:
@@ -289,7 +296,7 @@ export const questions = [
   },
   {
     id: 41,
-    type: "QSER",
+    type: "SECUR",
     question: "Quelle est la signification d'un clignotement plus rapide ?",
     answer: "Non fonctionnement de l'une des ampoules.",
   },
@@ -303,14 +310,14 @@ export const questions = [
   },
   {
     id: 43,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez le voyant d'alerte signalant une pression insuffisante d'huile dans le moteur.",
     answer: "",
   },
   {
     id: 44,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelles sont les conditions à respecter pour contrôler le niveau d'huile ?",
     answer: "Moteur froid et sur un terrain plat.",
@@ -325,7 +332,7 @@ export const questions = [
   },
   {
     id: 46,
-    type: "VE",
+    type: "VERIF",
     question:
       "Contrôlez l'état, la propreté et le fonctionnement du ou des feux de brouillard arrière.",
     answer:
@@ -333,7 +340,7 @@ export const questions = [
   },
   {
     id: 47,
-    type: "QSER",
+    type: "SECUR",
     question: "Dans quels cas les utilise-t-on ?",
     answer: "Par temps de brouillard et neige.",
   },
@@ -346,13 +353,13 @@ export const questions = [
   },
   {
     id: 49,
-    type: "VE",
+    type: "VERIF",
     question: "Vérifiez la présence de l'éthylotest.",
     answer: "",
   },
   {
     id: 50,
-    type: "QSER",
+    type: "SECUR",
     question:
       "A partir de quel taux d'alcoolémie, en période de permis probatoire, est-on en infraction ?",
     answer:
@@ -368,7 +375,7 @@ export const questions = [
   },
   {
     id: 52,
-    type: "VE",
+    type: "VERIF",
     question:
       "Contrôlez l'état, la propreté et le fonctionnement des feux de détresse à l'avant et à l'arrière.",
     answer:
@@ -376,7 +383,7 @@ export const questions = [
   },
   {
     id: 53,
-    type: "QSER",
+    type: "SECUR",
     question: "Dans quels cas doit-on les utiliser ?",
     answer: "En cas de panne, d'accident ou de ralentissement important.",
   },
@@ -389,14 +396,14 @@ export const questions = [
   },
   {
     id: 55,
-    type: "VE",
+    type: "VERIF",
     question: "Montrez la commande de réglage du volant.",
     answer:
       "Le candidat montre l'emplacement. Il ne lui est pas demandé de changer son réglage.",
   },
   {
     id: 56,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Pourquoi est-il important de bien régler son volant ? Citez deux exemples.",
     answer:
@@ -411,7 +418,7 @@ export const questions = [
   },
   {
     id: 58,
-    type: "VE",
+    type: "VERIF",
     question:
       "Contrôlez l'état, la propreté et le fonctionnement des feux de route.",
     answer:
@@ -419,7 +426,7 @@ export const questions = [
   },
   {
     id: 59,
-    type: "QSER",
+    type: "SECUR",
     question: "Citez un cas d'utilisation de l'appel lumineux.",
     answer:
       "- Pour avertir de son approche. - En cas de danger. - A la place de l'avertisseur sonore.",
@@ -434,14 +441,14 @@ export const questions = [
   },
   {
     id: 61,
-    type: "VE",
+    type: "VERIF",
     question: "Positionnez la commande pour diriger l'air vers le pare-brise.",
     answer:
       "La position auto (désembuage automatique) peut être utilisée si le véhicule en est équipé.",
   },
   {
     id: 62,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Citez deux éléments complémentaires permettant un désembuage efficace.",
     answer:
@@ -457,7 +464,7 @@ export const questions = [
   },
   {
     id: 64,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez où doit s'effectuer le contrôle du niveau d'huile moteur.",
     answer:
@@ -465,7 +472,7 @@ export const questions = [
   },
   {
     id: 65,
-    type: "QSER",
+    type: "SECUR",
     question: "Quel est le principal risque d'un manque d'huile moteur ?",
     answer: "Un risque de détérioration ou de casse du moteur.",
   },
@@ -479,13 +486,13 @@ export const questions = [
   },
   {
     id: 67,
-    type: "VE",
+    type: "VERIF",
     question: "Montrez le voyant d'alerte signalant un défaut de batterie.",
     answer: "",
   },
   {
     id: 68,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Qu'est-ce qui peut provoquer la décharge de la batterie, moteur éteint ?",
     answer: "Les feux ou accessoires électriques en fonctionnement.",
@@ -499,14 +506,14 @@ export const questions = [
   },
   {
     id: 70,
-    type: "VE",
+    type: "VERIF",
     question: "Montrez l'emplacement de la batterie du véhicule.",
     answer:
       "Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
   },
   {
     id: 71,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelle est la solution en cas de panne de batterie pour démarrer le véhicule sans le déplacer ?",
     answer:
@@ -522,14 +529,14 @@ export const questions = [
   },
   {
     id: 73,
-    type: "VE",
+    type: "VERIF",
     question:
       "De quelle couleur est le voyant qui indique une défaillance du système de freinage ?",
     answer: "![ref1]",
   },
   {
     id: 74,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quel est le risque de circuler avec un frein de parking mal desserré ?",
     answer: "Une dégradation du système de freinage.",
@@ -544,7 +551,7 @@ export const questions = [
   },
   {
     id: 76,
-    type: "VE",
+    type: "VERIF",
     question:
       "Contrôlez l'état, la propreté et le fonctionnement des feux de croisement.",
     answer:
@@ -552,7 +559,7 @@ export const questions = [
   },
   {
     id: 77,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelles sont les conséquences d'un mauvais réglage de ces feux ?",
     answer:
@@ -567,14 +574,14 @@ export const questions = [
   },
   {
     id: 79,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez le voyant d'alerte signalant une température trop élevée du liquide de refroidissement.",
     answer: "",
   },
   {
     id: 80,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelle est la conséquence d'une température trop élevée de ce liquide ?",
     answer: "Une surchauffe ou une casse moteur.",
@@ -589,14 +596,14 @@ export const questions = [
   },
   {
     id: 82,
-    type: "VE",
+    type: "VERIF",
     question: "Vérifiez l'état et la propreté des dispositifs réfléchissants.",
     answer:
       "Vérification des dispositifs, propres et en bon état (toute anomalie doit être signalée).",
   },
   {
     id: 83,
-    type: "QSER",
+    type: "SECUR",
     question: "Quelle est l'utilité des dispositifs réfléchissants ?",
     answer: "Rendre visible le véhicule la nuit.",
   },
@@ -609,14 +616,14 @@ export const questions = [
   },
   {
     id: 85,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez le voyant signalant la mauvaise fermeture d'une portière.",
     answer: "",
   },
   {
     id: 86,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelle précaution dois-je prendre pour que les enfants installés à l'arrière ne puissent pas ouvrir leur portière ?",
     answer: "Actionner la sécurité enfant sur les deux portières arrière.",
@@ -631,7 +638,7 @@ export const questions = [
   },
   {
     id: 88,
-    type: "VE",
+    type: "VERIF",
     question:
       "Contrôlez l'état, la propreté et le fonctionnement des feux de position à l'avant et à l'arrière du véhicule.",
     answer:
@@ -639,7 +646,7 @@ export const questions = [
   },
   {
     id: 89,
-    type: "QSER",
+    type: "SECUR",
     question: "Par temps clair, à quelle distance doivent-ils être visibles ?",
     answer: "A 150 mètres.",
   },
@@ -652,13 +659,13 @@ export const questions = [
   },
   {
     id: 91,
-    type: "VE",
+    type: "VERIF",
     question: "Actionnez les feux de détresse.",
     answer: "",
   },
   {
     id: 92,
-    type: "QSER",
+    type: "SECUR",
     question: "Quand les utilise-t-on ?",
     answer: "En cas de panne, d'accident ou de ralentissement important.",
   },
@@ -672,14 +679,14 @@ export const questions = [
   },
   {
     id: 94,
-    type: "VE",
+    type: "VERIF",
     question:
       "Sur le flanc d'un pneumatique, désignez le repère du témoin d'usure de la bande de roulement.",
     answer: "",
   },
   {
     id: 95,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Qu'est-ce que l'aquaplanage, et quelle peut être sa conséquence ?",
     answer:
@@ -695,14 +702,14 @@ export const questions = [
   },
   {
     id: 97,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez la commande permettant d'actionner le régulateur de vitesse.",
     answer: "",
   },
   {
     id: 98,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Sans actionner la commande du régulateur, comment le désactiver rapidement ?",
     answer: "En appuyant sur la pédale de frein ou d'embrayage.",
@@ -717,14 +724,14 @@ export const questions = [
   },
   {
     id: 100,
-    type: "VE",
+    type: "VERIF",
     question:
       "Ouvrez la trappe à carburant et/ou vérifiez la bonne fermeture du bouchon.",
     answer: "",
   },
   {
     id: 101,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quelles sont les précautions à prendre lors du remplissage du réservoir ?",
     answer: "Arrêter le moteur, ne pas fumer, ne pas téléphoner.",
@@ -739,13 +746,13 @@ export const questions = [
   },
   {
     id: 103,
-    type: "VE",
+    type: "VERIF",
     question: "Sans l'actionner, montrez la commande de l'avertisseur sonore.",
     answer: "",
   },
   {
     id: 104,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Dans quel cas peut-on utiliser l'avertisseur sonore en agglomération ?",
     answer: "En cas de danger immédiat.",
@@ -760,14 +767,14 @@ export const questions = [
   },
   {
     id: 106,
-    type: "VE",
+    type: "VERIF",
     question: "Montrez où s'effectue le remplissage de l'huile moteur.",
     answer:
       "Le candidat montre le bouchon de remplissage. Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
   },
   {
     id: 107,
-    type: "QSER",
+    type: "SECUR",
     question: "Quel est le risque d'un manque d'huile moteur ?",
     answer: "Un risque de détérioration ou de casse du moteur.",
   },
@@ -781,14 +788,14 @@ export const questions = [
   },
   {
     id: 109,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez la commande permettant de désactiver l'airbag du passager avant.",
     answer: "",
   },
   {
     id: 110,
-    type: "QSER",
+    type: "SECUR",
     question: "Dans quelle situation doit-on le désactiver ?",
     answer:
       "Lors du transport d'un enfant à l'avant dans un siège auto, dos à la route.",
@@ -803,14 +810,14 @@ export const questions = [
   },
   {
     id: 112,
-    type: "VE",
+    type: "VERIF",
     question:
       "A l'aide de la plaque indicative, donnez la pression préconisée pour les pneumatiques arrières, véhicule chargé.",
     answer: "",
   },
   {
     id: 113,
-    type: "QSER",
+    type: "SECUR",
     question:
       "A quelle fréquence est-il préconisé de vérifier la pression des pneus ?",
     answer:
@@ -826,14 +833,14 @@ export const questions = [
   },
   {
     id: 115,
-    type: "VE",
+    type: "VERIF",
     question:
       "Montrez le voyant signalant l'absence de bouclage de la ceinture de sécurité du conducteur.",
     answer: "",
   },
   {
     id: 116,
-    type: "QSER",
+    type: "SECUR",
     question:
       "En règle générale, à partir de quel âge un enfant peut-il être installé sur le siège passager avant du véhicule ?",
     answer: "10 ans.",
@@ -848,14 +855,14 @@ export const questions = [
   },
   {
     id: 118,
-    type: "VE",
+    type: "VERIF",
     question:
       "Vérifiez le fonctionnement de l'éclairage de la plaque d'immatriculation à l'arrière.",
     answer: "Toute anomalie doit être signalée.",
   },
   {
     id: 119,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Un défaut d'éclairage de la plaque lors du contrôle technique entraîne-t-il une contre-visite ?",
     answer: "Oui.",
@@ -870,14 +877,14 @@ export const questions = [
   },
   {
     id: 121,
-    type: "VE",
+    type: "VERIF",
     question:
       "Vérifiez la présence de l'attestation d'assurance du véhicule et de sa vignette sur le pare-brise.",
     answer: "",
   },
   {
     id: 122,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Quels sont les deux autres documents obligatoires à présenter en cas de contrôle par les forces de l'ordre ?",
     answer:
@@ -892,14 +899,14 @@ export const questions = [
   },
   {
     id: 124,
-    type: "VE",
+    type: "VERIF",
     question:
       "Indiquez où se situe la sécurité enfant sur l'une des portières à l'arrière du véhicule.",
     answer: "",
   },
   {
     id: 125,
-    type: "QSER",
+    type: "SECUR",
     question:
       "Si la sécurité enfant est enclenchée, est-il possible d'ouvrir la portière arrière depuis l'extérieur ?",
     answer: "Oui.",
@@ -914,14 +921,14 @@ export const questions = [
   },
   {
     id: 127,
-    type: "VE",
+    type: "VERIF",
     question:
       "Allumez le(s) feu(x) de brouillard arrière(s) et montrez le voyant correspondant.",
     answer: "",
   },
   {
     id: 128,
-    type: "QSER",
+    type: "SECUR",
     question: "Pouvez-vous les utiliser par forte pluie ?",
     answer: "Non.",
   },
@@ -934,7 +941,7 @@ export const questions = [
   },
   {
     id: 130,
-    type: "VE",
+    type: "VERIF",
     question:
       "Avec l'assistance de l'accompagnateur, contrôlez l'état, la propreté et le fonctionnement du ou des feux de recul.",
     answer:
@@ -942,7 +949,7 @@ export const questions = [
   },
   {
     id: 131,
-    type: "QSER",
+    type: "SECUR",
     question: "Quelles sont leurs deux utilités ?",
     answer:
       "- Éclairer la zone de recul la nuit. - Avertir les autres usagers de la manœuvre.",
