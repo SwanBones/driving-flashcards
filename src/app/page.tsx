@@ -1,6 +1,4 @@
 "use client";
-
-import Image from "next/image";
 import QuestionGrid from "./components/QuestionGrid";
 import { useQuestions } from "./stores/questionStore";
 import QuestionModal from "./components/QuestionModal";
@@ -18,31 +16,35 @@ export default function Home() {
     setModalIsOpen(true);
     setModalQuestionGroup(qG);
   };
-  const modalQuestions: Question[] = useMemo(
-    () =>
-      questions.filter(
-        (q: Question) =>
-          q.id === modalQuestionGroup?.questions.SECUR ||
-          q.id === modalQuestionGroup?.questions.VERIF ||
-          q.id === modalQuestionGroup?.questions.FirstAid
-      ),
-    [modalQuestionGroup]
-  );
+
+  const modalQuestions: Question[] = useMemo(() => {
+    const order = [
+      modalQuestionGroup?.questions.QSER,
+      modalQuestionGroup?.questions.VERIF,
+      modalQuestionGroup?.questions.FirstAid,
+    ];
+
+    return questions
+      .filter((q) => order.includes(q.id))
+      .sort((a, b) => order.indexOf(a.id) - order.indexOf(b.id));
+  }, [modalQuestionGroup, questions]);
+
   const handleModalCancel = () => {
     setModalIsOpen(false);
     setModalQuestionGroup(null);
   };
 
   return (
-    <div className="flex min-h-screen flex-col flex-inline gap-4 items-center justify-center bg-zinc-50 font-sans ">
-      <h1>Groupes de questions</h1>
-      <QuestionGrid
-        questionGroups={questionGroups}
-        onItemClick={handleQuestionGroupClick}
-      />
-
-      <h1>Questions uniques</h1>
-      <QuestionList />
+    <div className="flex min-h-screen flex-col flex-inline gap-4 p-20 items-center justify-center bg-zinc-50 font-sans ">
+      <div className="max-w-6xl flex flex-col items-center gap-8">
+        <h1>Groupes de questions</h1>
+        <QuestionGrid
+          questionGroups={questionGroups}
+          onItemClick={handleQuestionGroupClick}
+        />
+        <h1 className="mt-4">Questions uniques</h1>
+        <QuestionList />
+      </div>
       <QuestionModal
         questionGroup={modalQuestionGroup}
         questions={modalQuestions}

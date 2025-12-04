@@ -1,6 +1,6 @@
 export type Question = {
   id: number;
-  type: "VERIF" | "SECUR" | "FirstAid";
+  type: "VERIF" | "QSER" | "FirstAid";
   question: string;
   answer: string;
   checked?: boolean;
@@ -14,7 +14,7 @@ export const questions = [
   },
   {
     id: 2,
-    type: "SECUR",
+    type: "QSER",
     question: "Pourquoi doit-on régler la hauteur des feux ?",
     answer: "Pour ne pas éblouir les autres usagers.",
   },
@@ -35,7 +35,7 @@ export const questions = [
   },
   {
     id: 5,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Pourquoi est-il préférable d'utiliser un liquide spécial en hiver ?",
     answer: "Pour éviter le gel du liquide.",
@@ -58,7 +58,7 @@ export const questions = [
   },
   {
     id: 8,
-    type: "SECUR",
+    type: "QSER",
     question: "Quel est l'intérêt de la position nuit ?",
     answer: "Ne pas être ébloui par les feux du véhicule suiveur.",
   },
@@ -78,7 +78,7 @@ export const questions = [
   },
   {
     id: 11,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Citez un endroit où l'on peut trouver les pressions préconisées pour les pneumatiques ?",
     answer:
@@ -101,7 +101,7 @@ export const questions = [
   },
   {
     id: 14,
-    type: "SECUR",
+    type: "QSER",
     question: "Comment détecter leur usure en circulation ?",
     answer:
       "En cas de pluie, lorsqu'ils laissent des traces sur le pare brise.",
@@ -122,7 +122,7 @@ export const questions = [
   },
   {
     id: 17,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelles sont les précautions à prendre en cas d'installation d'un porte vélo ?",
     answer: "La plaque d'immatriculation et les feux doivent être visibles.",
@@ -143,7 +143,7 @@ export const questions = [
   },
   {
     id: 20,
-    type: "SECUR",
+    type: "QSER",
     question:
       "En cas de panne ou d'accident, quel autre accessoire de sécurité est obligatoire ?",
     answer: "Le triangle de pré-signalisation.",
@@ -166,7 +166,7 @@ export const questions = [
   },
   {
     id: 23,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelle est la conséquence d'un niveau insuffisant du liquide de frein ?",
     answer: "Une perte d'efficacité du freinage.",
@@ -188,7 +188,7 @@ export const questions = [
   },
   {
     id: 26,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quels sont les deux autres documents obligatoires à présenter en cas de contrôle par les forces de l'ordre ?",
     answer: "L'attestation d'assurance et le permis de conduire.",
@@ -209,7 +209,7 @@ export const questions = [
   },
   {
     id: 29,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quel est le risque de circuler avec des balais d'essuie glace défectueux ?",
     answer: "Une mauvaise visibilité en cas d'intempéries.",
@@ -229,7 +229,7 @@ export const questions = [
   },
   {
     id: 32,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelles sont les précautions à prendre lors du remplissage du réservoir ?",
     answer: "Arrêter le moteur, ne pas fumer, ne pas téléphoner.",
@@ -252,7 +252,7 @@ export const questions = [
   },
   {
     id: 35,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quel est le danger si l'on complète le niveau du liquide lorsque le moteur est chaud ?",
     answer: "Un risque de brûlure.",
@@ -273,7 +273,7 @@ export const questions = [
   },
   {
     id: 38,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelle peut être la conséquence d'une panne de dégivrage de la lunette arrière ?",
     answer: "Une insuffisance ou une absence de visibilité vers l'arrière.",
@@ -296,7 +296,7 @@ export const questions = [
   },
   {
     id: 41,
-    type: "SECUR",
+    type: "QSER",
     question: "Quelle est la signification d'un clignotement plus rapide ?",
     answer: "Non fonctionnement de l'une des ampoules.",
   },
@@ -317,7 +317,7 @@ export const questions = [
   },
   {
     id: 44,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelles sont les conditions à respecter pour contrôler le niveau d'huile ?",
     answer: "Moteur froid et sur un terrain plat.",
@@ -340,7 +340,7 @@ export const questions = [
   },
   {
     id: 47,
-    type: "SECUR",
+    type: "QSER",
     question: "Dans quels cas les utilise-t-on ?",
     answer: "Par temps de brouillard et neige.",
   },
@@ -359,7 +359,7 @@ export const questions = [
   },
   {
     id: 50,
-    type: "SECUR",
+    type: "QSER",
     question:
       "A partir de quel taux d'alcoolémie, en période de permis probatoire, est-on en infraction ?",
     answer:
@@ -383,7 +383,7 @@ export const questions = [
   },
   {
     id: 53,
-    type: "SECUR",
+    type: "QSER",
     question: "Dans quels cas doit-on les utiliser ?",
     answer: "En cas de panne, d'accident ou de ralentissement important.",
   },
@@ -403,7 +403,7 @@ export const questions = [
   },
   {
     id: 56,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Pourquoi est-il important de bien régler son volant ? Citez deux exemples.",
     answer:
@@ -426,7 +426,7 @@ export const questions = [
   },
   {
     id: 59,
-    type: "SECUR",
+    type: "QSER",
     question: "Citez un cas d'utilisation de l'appel lumineux.",
     answer:
       "- Pour avertir de son approche. - En cas de danger. - A la place de l'avertisseur sonore.",
@@ -448,7 +448,7 @@ export const questions = [
   },
   {
     id: 62,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Citez deux éléments complémentaires permettant un désembuage efficace.",
     answer:
@@ -472,7 +472,7 @@ export const questions = [
   },
   {
     id: 65,
-    type: "SECUR",
+    type: "QSER",
     question: "Quel est le principal risque d'un manque d'huile moteur ?",
     answer: "Un risque de détérioration ou de casse du moteur.",
   },
@@ -492,7 +492,7 @@ export const questions = [
   },
   {
     id: 68,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Qu'est-ce qui peut provoquer la décharge de la batterie, moteur éteint ?",
     answer: "Les feux ou accessoires électriques en fonctionnement.",
@@ -513,7 +513,7 @@ export const questions = [
   },
   {
     id: 71,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelle est la solution en cas de panne de batterie pour démarrer le véhicule sans le déplacer ?",
     answer:
@@ -536,7 +536,7 @@ export const questions = [
   },
   {
     id: 74,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quel est le risque de circuler avec un frein de parking mal desserré ?",
     answer: "Une dégradation du système de freinage.",
@@ -559,7 +559,7 @@ export const questions = [
   },
   {
     id: 77,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelles sont les conséquences d'un mauvais réglage de ces feux ?",
     answer:
@@ -581,7 +581,7 @@ export const questions = [
   },
   {
     id: 80,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelle est la conséquence d'une température trop élevée de ce liquide ?",
     answer: "Une surchauffe ou une casse moteur.",
@@ -603,7 +603,7 @@ export const questions = [
   },
   {
     id: 83,
-    type: "SECUR",
+    type: "QSER",
     question: "Quelle est l'utilité des dispositifs réfléchissants ?",
     answer: "Rendre visible le véhicule la nuit.",
   },
@@ -623,7 +623,7 @@ export const questions = [
   },
   {
     id: 86,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelle précaution dois-je prendre pour que les enfants installés à l'arrière ne puissent pas ouvrir leur portière ?",
     answer: "Actionner la sécurité enfant sur les deux portières arrière.",
@@ -646,7 +646,7 @@ export const questions = [
   },
   {
     id: 89,
-    type: "SECUR",
+    type: "QSER",
     question: "Par temps clair, à quelle distance doivent-ils être visibles ?",
     answer: "A 150 mètres.",
   },
@@ -665,7 +665,7 @@ export const questions = [
   },
   {
     id: 92,
-    type: "SECUR",
+    type: "QSER",
     question: "Quand les utilise-t-on ?",
     answer: "En cas de panne, d'accident ou de ralentissement important.",
   },
@@ -686,7 +686,7 @@ export const questions = [
   },
   {
     id: 95,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Qu'est-ce que l'aquaplanage, et quelle peut être sa conséquence ?",
     answer:
@@ -709,7 +709,7 @@ export const questions = [
   },
   {
     id: 98,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Sans actionner la commande du régulateur, comment le désactiver rapidement ?",
     answer: "En appuyant sur la pédale de frein ou d'embrayage.",
@@ -731,7 +731,7 @@ export const questions = [
   },
   {
     id: 101,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quelles sont les précautions à prendre lors du remplissage du réservoir ?",
     answer: "Arrêter le moteur, ne pas fumer, ne pas téléphoner.",
@@ -752,7 +752,7 @@ export const questions = [
   },
   {
     id: 104,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Dans quel cas peut-on utiliser l'avertisseur sonore en agglomération ?",
     answer: "En cas de danger immédiat.",
@@ -774,7 +774,7 @@ export const questions = [
   },
   {
     id: 107,
-    type: "SECUR",
+    type: "QSER",
     question: "Quel est le risque d'un manque d'huile moteur ?",
     answer: "Un risque de détérioration ou de casse du moteur.",
   },
@@ -795,7 +795,7 @@ export const questions = [
   },
   {
     id: 110,
-    type: "SECUR",
+    type: "QSER",
     question: "Dans quelle situation doit-on le désactiver ?",
     answer:
       "Lors du transport d'un enfant à l'avant dans un siège auto, dos à la route.",
@@ -817,7 +817,7 @@ export const questions = [
   },
   {
     id: 113,
-    type: "SECUR",
+    type: "QSER",
     question:
       "A quelle fréquence est-il préconisé de vérifier la pression des pneus ?",
     answer:
@@ -840,7 +840,7 @@ export const questions = [
   },
   {
     id: 116,
-    type: "SECUR",
+    type: "QSER",
     question:
       "En règle générale, à partir de quel âge un enfant peut-il être installé sur le siège passager avant du véhicule ?",
     answer: "10 ans.",
@@ -862,7 +862,7 @@ export const questions = [
   },
   {
     id: 119,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Un défaut d'éclairage de la plaque lors du contrôle technique entraîne-t-il une contre-visite ?",
     answer: "Oui.",
@@ -884,7 +884,7 @@ export const questions = [
   },
   {
     id: 122,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Quels sont les deux autres documents obligatoires à présenter en cas de contrôle par les forces de l'ordre ?",
     answer:
@@ -906,7 +906,7 @@ export const questions = [
   },
   {
     id: 125,
-    type: "SECUR",
+    type: "QSER",
     question:
       "Si la sécurité enfant est enclenchée, est-il possible d'ouvrir la portière arrière depuis l'extérieur ?",
     answer: "Oui.",
@@ -928,7 +928,7 @@ export const questions = [
   },
   {
     id: 128,
-    type: "SECUR",
+    type: "QSER",
     question: "Pouvez-vous les utiliser par forte pluie ?",
     answer: "Non.",
   },
@@ -949,7 +949,7 @@ export const questions = [
   },
   {
     id: 131,
-    type: "SECUR",
+    type: "QSER",
     question: "Quelles sont leurs deux utilités ?",
     answer:
       "- Éclairer la zone de recul la nuit. - Avertir les autres usagers de la manœuvre.",

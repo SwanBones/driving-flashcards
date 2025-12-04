@@ -10,7 +10,7 @@ function QuestionGrid(props: Props) {
   const { questionGroups, onItemClick } = props;
 
   return (
-    <div className="grid grid-cols-10 gap-2">
+    <div className="gap-2 flex flex-wrap justify-center max-w-4xl mx-auto">
       {questionGroups?.map((questionGroup, index) => {
         return (
           <QuestionGridItem

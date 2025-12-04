@@ -1,33 +1,132 @@
 import { useMemo } from "react";
 import { useQuestions } from "../stores/questionStore";
 import { Question } from "@/questions";
-import { Collapse } from "antd";
-import { CaretRightOutlined } from "@ant-design/icons";
+import { Collapse, Tabs, TabsProps } from "antd";
+import {
+  CaretRightOutlined,
+  CheckOutlined,
+  RightOutlined,
+} from "@ant-design/icons";
 function QuestionList() {
-  const { questions } = useQuestions();
+  const { questions, checkQuestions } = useQuestions();
 
-  const questionNodes: any = useMemo(
+  const VerifQuestionNodes: any = useMemo(
     () =>
-      questions.map((question: Question, index: number) => {
-        return {
-          key: `unique-question-${index}`,
-          label: question.question,
-          children: <p>{question.answer}</p>,
-        };
-      }),
+      questions
+        .filter((q) => q.type === "VERIF")
+        .map((question: Question, index: number) => {
+          return {
+            key: `uq-${question.id}`,
+            label: (
+              <div className="flex flex-row justify-between">
+                <p>{question.question}</p>
+                {question.checked && (
+                  <CheckOutlined className="!text-red-600" />
+                )}
+              </div>
+            ),
+
+            children: <p>{question.answer}</p>,
+          };
+        }),
     [questions]
   );
+  const QserQuestionNodes: any = useMemo(
+    () =>
+      questions
+        .filter((q) => q.type === "QSER")
+        .map((question: Question, index: number) => {
+          return {
+            key: `uq-${question.id}`,
+            label: (
+              <div className="flex flex-row justify-between">
+                <p>{question.question}</p>
+                {question.checked && (
+                  <CheckOutlined className="!text-green-600" />
+                )}
+              </div>
+            ),
+
+            children: <p>{question.answer}</p>,
+          };
+        }),
+    [questions]
+  );
+  const FirstAidQuestionNodes: any = useMemo(
+    () =>
+      questions
+        .filter((q) => q.type === "FirstAid")
+        .map((question: Question, index: number) => {
+          return {
+            key: `uq-${question.id}`,
+            label: (
+              <div className="flex flex-row justify-between">
+                <p>{question.question}</p>
+                {question.checked && (
+                  <CheckOutlined className="!text-orange-400" />
+                )}
+              </div>
+            ),
+
+            children: <p>{question.answer}</p>,
+          };
+        }),
+    [questions]
+  );
+
+  const items: TabsProps["items"] = [
+    {
+      key: "1",
+      label: "Vérifications",
+      children: (
+        <Collapse
+          bordered={false}
+          expandIcon={({ isActive }) => (
+            <RightOutlined rotate={isActive ? 90 : 0} />
+          )}
+          onChange={(c) =>
+            checkQuestions(c.map((idString) => Number(idString.slice(3))))
+          }
+          items={VerifQuestionNodes}
+        />
+      ),
+    },
+    {
+      key: "2",
+      label: "QSER",
+      children: (
+        <Collapse
+          bordered={false}
+          expandIcon={({ isActive }) => (
+            <RightOutlined rotate={isActive ? 90 : 0} />
+          )}
+          onChange={(c) =>
+            checkQuestions(c.map((idString) => Number(idString.slice(3))))
+          }
+          items={QserQuestionNodes}
+        />
+      ),
+    },
+    {
+      key: "3",
+      label: "Premiers Secours",
+      children: (
+        <Collapse
+          bordered={false}
+          expandIcon={({ isActive }) => (
+            <RightOutlined rotate={isActive ? 90 : 0} />
+          )}
+          onChange={(c) =>
+            checkQuestions(c.map((idString) => Number(idString.slice(3))))
+          }
+          items={FirstAidQuestionNodes}
+        />
+      ),
+    },
+  ];
+
   return (
-    <div>
-      <Collapse
-        bordered={false}
-        defaultActiveKey={["1"]}
-        expandIcon={({ isActive }) => (
-          <CaretRightOutlined rotate={isActive ? 90 : 0} />
-        )}
-        items={questionNodes}
-      />
-    </div>
+    <Tabs defaultActiveKey="1" items={items} className="w-full max-w-4xl " />
   );
 }
 export default QuestionList;
