@@ -12,6 +12,15 @@ import SettingsModal from "./components/SettingsModal";
 import { useSearchParams, useRouter } from "next/navigation";
 import { compressBooleans, decompressBooleans } from "./utils/encoding";
 
+//TODO:
+// - A way to uncheck answers
+// - ACTUAL normal number of questions
+// - questions with actual explainations and pictures
+// - a bit more contrast
+// - better theme
+// - better question grouping? distinguish SAIP security / Verifs interne and externe?
+// README
+
 export default function Home() {
   const { questions, questionGroups, checkQuestions, checkedQuestions } =
     useQuestions();

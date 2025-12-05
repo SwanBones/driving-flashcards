@@ -126,7 +126,12 @@ function QuestionList() {
   ];
 
   return (
-    <Tabs defaultActiveKey="1" items={items} className="w-full max-w-4xl " />
+    <Tabs
+      defaultActiveKey="1"
+      items={items}
+      className="w-full max-w-4xl "
+      centered
+    />
   );
 }
 export default QuestionList;
