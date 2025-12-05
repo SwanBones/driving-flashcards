@@ -19,6 +19,9 @@ import { compressBooleans, decompressBooleans } from "./utils/encoding";
 // - a bit more contrast
 // - better theme
 // - better question grouping? distinguish SAIP security / Verifs interne and externe?
+// author info , copyright, github link and paypal on sidebar
+//bug: scrolls to the top after clicking cuz of the router changes
+//publish and update links (localhost:3000)
 // README
 
 export default function Home() {
@@ -91,8 +94,9 @@ export default function Home() {
   const updateQuery = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("progress", value);
-
+    const scrollY = window.scrollY; // save current scroll
     router.replace(`${window.location.pathname}?${params.toString()}`);
+    window.scrollTo(0, scrollY); // restore scroll
   };
 
   return (
