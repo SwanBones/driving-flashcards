@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { MouseEvent, useMemo } from "react";
 import { useQuestions } from "../stores/questionStore";
 import { Question } from "@/questions";
 import { Collapse, Tabs, TabsProps } from "antd";
@@ -7,9 +7,13 @@ import {
   CheckOutlined,
   RightOutlined,
 } from "@ant-design/icons";
+import UncheckableBox from "./UncheckableBox";
+import classNames from "classnames";
 function QuestionList() {
-  const { questions, checkQuestions } = useQuestions();
-
+  const { questions, checkQuestions, uncheckQuestions } = useQuestions();
+  const handleUncheckQuestion = (id: number) => {
+    uncheckQuestions([id]);
+  };
   const VerifQuestionNodes: any = useMemo(
     () =>
       questions
@@ -21,7 +25,10 @@ function QuestionList() {
               <div className="flex flex-row justify-between">
                 <p>{question.question}</p>
                 {question.checked && (
-                  <CheckOutlined className="!text-red-600" />
+                  <UncheckableBox
+                    checkMarkClassname="!text-red-600"
+                    onUncheck={() => handleUncheckQuestion(question.id)}
+                  />
                 )}
               </div>
             ),
@@ -42,10 +49,14 @@ function QuestionList() {
               <div className="flex flex-row justify-between">
                 <p>{question.question}</p>
                 {question.checked && (
-                  <CheckOutlined className="!text-green-600" />
+                  <UncheckableBox
+                    checkMarkClassname="!text-green-600"
+                    onUncheck={() => handleUncheckQuestion(question.id)}
+                  />
                 )}
               </div>
             ),
+            classNames: "group bg-red-900",
 
             children: <p>{question.answer}</p>,
           };
@@ -63,11 +74,14 @@ function QuestionList() {
               <div className="flex flex-row justify-between">
                 <p>{question.question}</p>
                 {question.checked && (
-                  <CheckOutlined className="!text-orange-400" />
+                  <UncheckableBox
+                    checkMarkClassname="!text-orange-400"
+                    onUncheck={() => handleUncheckQuestion(question.id)}
+                  />
                 )}
               </div>
             ),
-
+            classNames: "group bg-red-900",
             children: <p>{question.answer}</p>,
           };
         }),

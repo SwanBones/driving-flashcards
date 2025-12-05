@@ -12,7 +12,7 @@ function SettingsModal(props: Props) {
   const { onCancel, isOpen, progressCode } = props;
   const { uncheckQuestions, checkedQuestions, questions } = useQuestions();
   const handleReset = () => {
-    uncheckQuestions(checkedQuestions);
+    uncheckQuestions(Array.from(checkedQuestions));
   };
 
   return (
@@ -20,8 +20,11 @@ function SettingsModal(props: Props) {
       <div className="flex gap-2 flex-col">
         <h2 className="text-center">Sauvegarde ton progrès</h2>
 
-        <Tooltip title="Copier" placement="left">
-          <div
+        <Tooltip title="Copier" placement="right">
+          <Button
+            style={{ padding: 24 }}
+            variant="filled"
+            color="default"
             onClick={() => {
               const link = `http://localhost:3000/?progress=${progressCode}`;
               navigator.clipboard
@@ -33,19 +36,18 @@ function SettingsModal(props: Props) {
                   message.error("Échec de la copie !");
                 });
             }}
-            className="bg-zinc-50 rounded-lg p-4 flex-row flex justify-between items-center hover:bg-zinc-100 transition-background duration-100 hover:cursor-pointer"
           >
             <p>
               http://localhost:3000/
               <span className="text-zinc-400">{`?progress=${progressCode}`}</span>
             </p>
             <CopyOutlined className="!text-zinc-500" />
-          </div>
+          </Button>
         </Tooltip>
 
         <div className="flex flex-col items-center">
           <Button onClick={handleReset} danger className="mt-4">
-            Réinitialiser les réponses
+            Décocher toutes les questions
           </Button>
         </div>
       </div>

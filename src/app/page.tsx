@@ -12,18 +12,6 @@ import SettingsModal from "./components/SettingsModal";
 import { useSearchParams, useRouter } from "next/navigation";
 import { compressBooleans, decompressBooleans } from "./utils/encoding";
 
-//TODO:
-// - A way to uncheck answers
-// - ACTUAL normal number of questions
-// - questions with actual explainations and pictures
-// - a bit more contrast
-// - better theme
-// - better question grouping? distinguish SAIP security / Verifs interne and externe?
-// author info , copyright, github link and paypal on sidebar
-//bug: scrolls to the top after clicking cuz of the router changes
-//publish and update links (localhost:3000)
-// README
-
 export default function Home() {
   const { questions, questionGroups, checkQuestions, checkedQuestions } =
     useQuestions();
@@ -53,7 +41,6 @@ export default function Home() {
           return value ? index + 1 : undefined;
         })
         .filter((val) => val !== undefined);
-      console.log({ booleans, validatedQuestions });
       checkQuestions(validatedQuestions);
     }
   }, []);
@@ -95,7 +82,9 @@ export default function Home() {
     const params = new URLSearchParams(searchParams.toString());
     params.set("progress", value);
     const scrollY = window.scrollY; // save current scroll
-    router.replace(`${window.location.pathname}?${params.toString()}`);
+    router.replace(`${window.location.pathname}?${params.toString()}`, {
+      scroll: false,
+    });
     window.scrollTo(0, scrollY); // restore scroll
   };
 

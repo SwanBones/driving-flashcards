@@ -1,9 +1,11 @@
 import { QuestionGroup } from "@/groups";
 import { Question } from "@/questions";
-import { Button, Card, Modal } from "antd";
-import { useEffect, useState } from "react";
+import { Button, Card, Modal, Tooltip } from "antd";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { useQuestions } from "../stores/questionStore";
-import { CheckOutlined } from "@ant-design/icons";
+import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
+import UncheckableBox from "./UncheckableBox";
+import QuestionCardItem from "./QuestionCardItem";
 type Props = {
   questions: Question[];
   isOpen: boolean;
@@ -13,7 +15,7 @@ type Props = {
 function QuestionModal(props: Props) {
   const { questions, isOpen = false, onCancel, questionGroup } = props;
   const [showAnswers, setShowAnswers] = useState<number[]>([]);
-  const { checkQuestions } = useQuestions();
+  const { checkQuestions, uncheckQuestions } = useQuestions();
   const onInternalCancel = () => {
     setShowAnswers([]);
     onCancel();
@@ -44,7 +46,9 @@ function QuestionModal(props: Props) {
       checkQuestions([question.id]);
     }
   };
-
+  const handleUncheckQuestion: any = (id: number) => {
+    uncheckQuestions([id]);
+  };
   return (
     <Modal
       open={isOpen}
@@ -56,21 +60,12 @@ function QuestionModal(props: Props) {
       <div className="flex flex-col gap-2">
         {questions.map((question) => {
           return (
-            <Card hoverable onClick={() => handleQuestionClick(question)}>
-              <div className={`flex-col flex gap-4`}>
-                <div className="flex flex-row justify-between gap-2 ">
-                  <p className="font-bold">{question.question}</p>
-                  {question.checked && (
-                    <CheckOutlined className="!text-green-600" />
-                  )}
-                </div>
-                {showAnswers.includes(question.id) && (
-                  <div className="border-t border-zinc-100 pt-4">
-                    <p>{question.answer}</p>
-                  </div>
-                )}
-              </div>
-            </Card>
+            <QuestionCardItem
+              question={question}
+              checkMarkClassname={"!text-green-600"}
+              handleQuestionClick={handleQuestionClick}
+              showAnswers={showAnswers}
+            />
           );
         })}
         <Button onClick={handleToggleAnswers} size="large" className="mt-4">
@@ -84,3 +79,25 @@ function QuestionModal(props: Props) {
 }
 
 export default QuestionModal;
+
+{
+  /* <Tooltip
+                      title="Décocher cette question"
+                      mouseEnterDelay={1}
+                      placement="right"
+                    >
+                      <button
+                        onClick={(e) => handleUncheckQuestion(e, question.id)}
+                        className=" p-2 hover:cursor-pointer relative inline-flex items-center justify-center overflow-hidden w-10  font-medium text-neutral-200"
+                      >
+                        <div className="translate-x-0 transition group-hover:translate-x-[300%]">
+                          <CheckOutlined className="!text-green-600" />
+                        </div>
+                        <div className="absolute -translate-x-[300%] transition group-hover:translate-x-0">
+                          <div className=" hover:opacity-70 transition-opacity duration-100  group-hover:flex  ">
+                            <CloseCircleFilled />
+                          </div>
+                        </div>
+                      </button>
+                    </Tooltip> */
+}
