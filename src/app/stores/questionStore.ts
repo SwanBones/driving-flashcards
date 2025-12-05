@@ -7,7 +7,7 @@ export interface QuestionsState {
   questionGroups: any[]; // replace with actual type if you have one
   checkedQuestions: number[];
   checkQuestions: (ids: number[]) => void;
-  uncheckQuestion: (id: number) => void;
+  uncheckQuestions: (id: number[]) => void;
 
   checkQuestionGroup: (id: number) => void;
   uncheckQuestionGroup: (id: number) => void;
@@ -27,10 +27,13 @@ export const useQuestions = create<QuestionsState>((set) => ({
       ),
     })),
 
-  uncheckQuestion: (id) =>
+  uncheckQuestions: (ids) =>
     set((state) => ({
+      checkedQuestions: state.checkedQuestions?.filter(
+        (cq) => !ids.includes(cq)
+      ),
       questions: state.questions.map((q, idx) =>
-        idx === id - 1 ? { ...q, checked: false } : q
+        ids.includes(idx + 1) ? { ...q, checked: false } : q
       ),
     })),
 

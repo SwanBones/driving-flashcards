@@ -23,6 +23,9 @@ h1 {
   font-weight: bold;
   font-size: large;
 }
+h2 {
+  font-weight: bold;
+}
 
 body {
   background: var(--background);
