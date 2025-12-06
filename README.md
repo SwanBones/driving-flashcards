@@ -15,15 +15,12 @@ Quelques réponses ont été modifiés pour améliorer la clarté et la compréh
 
 - ACTUAL normal number of questions
 - questions with actual explainations and pictures
-- infos button next to settings
 
 ### Priority 2:
 
 - better question grouping? distinguish SAIP security / Verifs interne and externe?
-- author info , copyright, github link and paypal on sidebar
-  - allow download of original document
-- bug: scrolls to the top after clicking cuz of the router changes
 - publish and update links (localhost:3000)
+- this site does not use cookies banner > card on the bottom right
 
 ### Priority 3
 
@@ -31,3 +28,5 @@ Quelques réponses ont été modifiés pour améliorer la clarté et la compréh
   - let people disable my donate button with a queryparam
 - a bit more contrast
 - better theme
+
+- author info , copyright, github link and paypal on sidebar

@@ -100,8 +100,12 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col flex-inline gap-4 px-20 py-10 items-center justify-center bg-zinc-50 font-sans ">
-      <div className="flex flex-row self-end gap-2">
+    <div className="flex min-h-screen flex-col flex-inline gap-4 px-20 py-10 items-center justify-center bg-zinc-50 font-sans">
+      {/* I NEED A SHADOW ON THIS */}
+      <div className="fixed bottom-0 right-0 m-4 bg-white rounded-xl p-4  ">
+        <p>heyllow</p>
+      </div>
+      <div className="flex flex-row self-end gap-2 ">
         <Button
           icon={<SettingOutlined />}
           variant="text"
@@ -116,18 +120,20 @@ export default function Home() {
           className="self-end"
         />
       </div>
-
-      <div className="max-w-6xl flex flex-col items-center gap-8">
+      <div className="max-w-6xl flex flex-col items-center gap-8 ">
         <h1>Groupes de questions</h1>
-        <QuestionGrid
-          questionGroups={questionGroups}
-          onItemClick={handleQuestionGroupClick}
-        />
+        <div className="bg-zinc-100 rounded-xl p-10">
+          <QuestionGrid
+            questionGroups={questionGroups}
+            onItemClick={handleQuestionGroupClick}
+          />
+        </div>
+
         <h1 className="mt-4">Questions uniques</h1>
+
         <QuestionList />
         <LegalInfo />
       </div>
-
       <SettingsModal
         progressCode={codedProgress}
         isOpen={isSettingsModalOpen}
@@ -143,7 +149,6 @@ export default function Home() {
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
       />
-
       {contextHolder}
     </div>
   );
