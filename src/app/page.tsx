@@ -73,8 +73,8 @@ export default function Home() {
 
   const modalQuestions: Question[] = useMemo(() => {
     const order = [
-      modalQuestionGroup?.questions.QSER,
       modalQuestionGroup?.questions.VERIF,
+      modalQuestionGroup?.questions.QSER,
       modalQuestionGroup?.questions.FirstAid,
     ];
 
@@ -100,7 +100,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col flex-inline gap-4 p-20 items-center justify-center bg-zinc-50 font-sans ">
+    <div className="flex min-h-screen flex-col flex-inline gap-4 px-20 py-10 items-center justify-center bg-zinc-50 font-sans ">
       <div className="flex flex-row self-end gap-2">
         <Button
           icon={<SettingOutlined />}

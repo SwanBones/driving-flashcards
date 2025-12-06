@@ -1,6 +1,7 @@
+export type QuestionType = "VERIF" | "QSER" | "FirstAid";
 export type Question = {
   id: number;
-  type: "VERIF" | "QSER" | "FirstAid";
+  type: QuestionType;
   question: string;
   answer: string;
   checked?: boolean;

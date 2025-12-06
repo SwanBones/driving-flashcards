@@ -1,6 +1,9 @@
 export function compressBooleans(bools: boolean[]): string {
-  const binaryStr = bools.map((b) => (b ? "1" : "0")).join("");
-  const decimal = BigInt("0b" + binaryStr); // use BigInt constructor
+  const binaryStr = bools
+    .map((b) => (b ? "1" : "0"))
+    .reverse()
+    .join("");
+  const decimal = BigInt("0b" + binaryStr);
   return decimalToBase26(decimal);
 }
 
@@ -11,7 +14,10 @@ export function decompressBooleans(
   const decimal = base26ToDecimal(base26Str);
   let binaryStr = decimal.toString(2);
   binaryStr = "0".repeat(numberOfQuestions - binaryStr.length) + binaryStr;
-  return binaryStr.split("").map((c: any) => c === "1");
+  return binaryStr
+    .split("")
+    .reverse()
+    .map((c: string) => c === "1");
 }
 
 function decimalToBase26(num: any): string {

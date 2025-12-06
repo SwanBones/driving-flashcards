@@ -1,11 +1,10 @@
 import { QuestionGroup } from "@/groups";
 import { Question } from "@/questions";
-import { Button, Card, Modal, Tooltip } from "antd";
-import { MouseEventHandler, useEffect, useState } from "react";
+import { Button, Modal } from "antd";
 import { useQuestions } from "../stores/questionStore";
-import { CheckOutlined, CloseCircleFilled } from "@ant-design/icons";
-import UncheckableBox from "./UncheckableBox";
 import QuestionCardItem from "./QuestionCardItem";
+import { useState } from "react";
+
 type Props = {
   questions: Question[];
   isOpen: boolean;
@@ -55,7 +54,7 @@ function QuestionModal(props: Props) {
       footer
       centered
     >
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-4 mt-10">
         {questions.map((question) => {
           return (
             <QuestionCardItem
@@ -67,11 +66,11 @@ function QuestionModal(props: Props) {
             />
           );
         })}
-        <Button onClick={handleToggleAnswers} size="large" className="mt-4">
+        {/* <Button onClick={handleToggleAnswers} size="large" className="mt-4">
           {showAnswers.length === 3
             ? "Cacher les réponses"
             : `Révéler les réponses`}
-        </Button>
+        </Button> */}
       </div>
     </Modal>
   );
