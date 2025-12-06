@@ -54,7 +54,7 @@ export const questions = [
     question:
       "Mettez le rétroviseur intérieur en position \"nuit\". Si le rétroviseur de l'accompagnateur gène la manipulation du dispositif, l'explication suffit.",
     answer:
-      'Si le véhicule possède un système automatique de mise en position "nuit" du rétroviseur intérieur, le candidat l\'indique.',
+      "Si le véhicule possède un système automatique de mise en position \"nuit\" du rétroviseur intérieur, le candidat l'indique. C'est la petite languette qui se situe juste en dessous du rétroviseur. Il faut la tirer vers soi pour le mettre en mode nuit,",
   },
   {
     id: 8,

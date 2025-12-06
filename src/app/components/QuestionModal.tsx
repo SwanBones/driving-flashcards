@@ -46,9 +46,7 @@ function QuestionModal(props: Props) {
       checkQuestions([question.id]);
     }
   };
-  const handleUncheckQuestion: any = (id: number) => {
-    uncheckQuestions([id]);
-  };
+
   return (
     <Modal
       open={isOpen}
@@ -61,6 +59,7 @@ function QuestionModal(props: Props) {
         {questions.map((question) => {
           return (
             <QuestionCardItem
+              key={`question-modal-${question.id}`}
               question={question}
               checkMarkClassname={"!text-green-600"}
               handleQuestionClick={handleQuestionClick}

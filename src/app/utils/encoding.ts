@@ -1,6 +1,6 @@
 export function compressBooleans(bools: boolean[]): string {
   const binaryStr = bools.map((b) => (b ? "1" : "0")).join("");
-  const decimal = parseInt(binaryStr, 2);
+  const decimal = BigInt("0b" + binaryStr); // use BigInt constructor
   return decimalToBase26(decimal);
 }
 
@@ -9,27 +9,26 @@ export function decompressBooleans(
   numberOfQuestions: number
 ): boolean[] {
   const decimal = base26ToDecimal(base26Str);
-  const binaryStr = decimal.toString(2);
-  const finalBinarystr =
-    "a".repeat(numberOfQuestions - binaryStr.length) + binaryStr;
-  return finalBinarystr.split("").map((char) => char === "1");
+  let binaryStr = decimal.toString(2);
+  binaryStr = "0".repeat(numberOfQuestions - binaryStr.length) + binaryStr;
+  return binaryStr.split("").map((c: any) => c === "1");
 }
 
-function decimalToBase26(num: number): string {
-  if (num === 0) return "a";
+function decimalToBase26(num: any): string {
+  if (num === BigInt(0)) return "a";
   let str = "";
-  while (num > 0) {
-    const rem = num % 26;
-    str = String.fromCharCode(97 + rem) + str;
-    num = Math.floor(num / 26);
+  while (num > BigInt(0)) {
+    const rem = num % BigInt(26);
+    str = String.fromCharCode(97 + Number(rem)) + str;
+    num = num / BigInt(26);
   }
   return str;
 }
 
-function base26ToDecimal(str: string): number {
-  let num = 0;
+function base26ToDecimal(str: string): any {
+  let num = BigInt(0);
   for (const char of str) {
-    num = num * 26 + (char.charCodeAt(0) - 97);
+    num = num * BigInt(26) + BigInt(char.charCodeAt(0) - 97);
   }
   return num;
 }

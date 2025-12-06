@@ -6,20 +6,28 @@ import { useEffect, useMemo, useState } from "react";
 import { Question } from "@/questions";
 import { QuestionGroup } from "@/groups";
 import QuestionList from "./components/QuestionList";
-import { SettingOutlined } from "@ant-design/icons";
+import {
+  InfoCircleFilled,
+  InfoCircleOutlined,
+  SettingOutlined,
+} from "@ant-design/icons";
 import { Button, message } from "antd";
 import SettingsModal from "./components/SettingsModal";
 import { useSearchParams, useRouter } from "next/navigation";
 import { compressBooleans, decompressBooleans } from "./utils/encoding";
+import InfoModal from "./components/InfoModal";
+import LegalInfo from "./components/LegalInfo";
 
 export default function Home() {
   const { questions, questionGroups, checkQuestions, checkedQuestions } =
     useQuestions();
   const [modalQuestionGroup, setModalQuestionGroup] =
     useState<QuestionGroup | null>(null);
-  const [isModalOpen, setIsModalIsOpen] = useState<boolean>(false);
+  const [isQuestionModalOpen, setIsQuestionModalOpen] =
+    useState<boolean>(false);
   const [isSettingsModalOpen, setIsSettingsModalOpen] =
     useState<boolean>(false);
+  const [isInfoModalOpen, setIsInfoModalOpen] = useState<boolean>(false);
   const [messageApi, contextHolder] = message.useMessage();
   const searchParams = useSearchParams();
 
@@ -50,11 +58,14 @@ export default function Home() {
   }, [codedProgress]);
 
   const handleQuestionGroupClick = (qG: QuestionGroup) => {
-    setIsModalIsOpen(true);
+    setIsQuestionModalOpen(true);
     setModalQuestionGroup(qG);
   };
   const handleSettingsClick = () => {
     setIsSettingsModalOpen(true);
+  };
+  const handleInfoClick = () => {
+    setIsInfoModalOpen(true);
   };
   const handleSettingsClose = () => {
     setIsSettingsModalOpen(false);
@@ -73,7 +84,7 @@ export default function Home() {
   }, [modalQuestionGroup, questions]);
 
   const handleModalCancel = () => {
-    setIsModalIsOpen(false);
+    setIsQuestionModalOpen(false);
     setModalQuestionGroup(null);
   };
   const router = useRouter();
@@ -90,12 +101,22 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col flex-inline gap-4 p-20 items-center justify-center bg-zinc-50 font-sans ">
-      <Button
-        icon={<SettingOutlined />}
-        variant="text"
-        onClick={handleSettingsClick}
-        className="self-end"
-      />
+      <div className="flex flex-row self-end gap-2">
+        <Button
+          icon={<SettingOutlined />}
+          variant="text"
+          onClick={handleSettingsClick}
+          className="self-end"
+        />
+
+        <Button
+          icon={<InfoCircleFilled />}
+          variant="text"
+          onClick={handleInfoClick}
+          className="self-end"
+        />
+      </div>
+
       <div className="max-w-6xl flex flex-col items-center gap-8">
         <h1>Groupes de questions</h1>
         <QuestionGrid
@@ -104,7 +125,9 @@ export default function Home() {
         />
         <h1 className="mt-4">Questions uniques</h1>
         <QuestionList />
+        <LegalInfo />
       </div>
+
       <SettingsModal
         progressCode={codedProgress}
         isOpen={isSettingsModalOpen}
@@ -113,9 +136,14 @@ export default function Home() {
       <QuestionModal
         questionGroup={modalQuestionGroup}
         questions={modalQuestions}
-        isOpen={isModalOpen}
+        isOpen={isQuestionModalOpen}
         onCancel={handleModalCancel}
       />
+      <InfoModal
+        isOpen={isInfoModalOpen}
+        onClose={() => setIsInfoModalOpen(false)}
+      />
+
       {contextHolder}
     </div>
   );

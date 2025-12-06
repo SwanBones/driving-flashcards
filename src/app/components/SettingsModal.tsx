@@ -1,8 +1,8 @@
-import { Button, Card, Modal, Tooltip, message } from "antd";
+import { Button, Card, Modal, Switch, Tooltip, message } from "antd";
 import { useQuestions } from "../stores/questionStore";
 import { useMemo } from "react";
 import { compressBooleans } from "../utils/encoding";
-import { CopyOutlined } from "@ant-design/icons";
+import { CloseOutlined, CopyOutlined } from "@ant-design/icons";
 type Props = {
   isOpen: boolean;
   onCancel: () => void;
@@ -10,14 +10,15 @@ type Props = {
 };
 function SettingsModal(props: Props) {
   const { onCancel, isOpen, progressCode } = props;
-  const { uncheckQuestions, checkedQuestions, questions } = useQuestions();
+  const { uncheckQuestions, checkedQuestions, setTrackQuestions } =
+    useQuestions();
   const handleReset = () => {
     uncheckQuestions(Array.from(checkedQuestions));
   };
 
   return (
     <Modal onCancel={onCancel} open={isOpen} footer centered title="Paramètres">
-      <div className="flex gap-2 flex-col">
+      <div className="flex gap-4 flex-col">
         <h2 className="text-center">Sauvegarde ton progrès</h2>
 
         <Tooltip title="Copier" placement="right">
@@ -37,16 +38,31 @@ function SettingsModal(props: Props) {
                 });
             }}
           >
-            <p>
-              http://localhost:3000/
-              <span className="text-zinc-400">{`?progress=${progressCode}`}</span>
-            </p>
-            <CopyOutlined className="!text-zinc-500" />
+            <div className="flex justify-between flex-row w-full">
+              <p>
+                http://localhost:3000/
+                <span className="text-zinc-400">{`?progress=${progressCode}`}</span>
+              </p>
+              <CopyOutlined className="!text-zinc-500" />
+            </div>
           </Button>
         </Tooltip>
 
-        <div className="flex flex-col items-center">
-          <Button onClick={handleReset} danger className="mt-4">
+        <div className="flex flex-row items-center gap-2">
+          <Switch
+            onChange={(checked) => setTrackQuestions(checked)}
+            defaultChecked
+            title="Suivi des questions"
+          />
+          <p className="text-sm"> Suivi des questions</p>
+        </div>
+        <div className="flex flex-col w-fit self-center">
+          <Button
+            icon={<CloseOutlined />}
+            onClick={handleReset}
+            danger
+            className="mt-4"
+          >
             Décocher toutes les questions
           </Button>
         </div>
