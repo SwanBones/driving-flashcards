@@ -15,7 +15,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ddd;
-    --foreground: #555;
+    --foreground: #404040;
   }
 }
 .excon {
@@ -54,4 +54,8 @@ body {
   src: url("fonts/Excon-Variable.ttf") format("truetype");
   font-weight: 100 900;
   font-style: normal;
+}
+
+.custom-tabs .ant-tabs-tab:hover .ant-tabs-tab-btn {
+  color: rgb(0, 0, 0); /* pink example */
 }

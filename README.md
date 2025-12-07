@@ -20,7 +20,6 @@ Quelques réponses ont été modifiés pour améliorer la clarté et la compréh
 
 - better question grouping? distinguish SAIP security / Verifs interne and externe?
 - publish and update links (localhost:3000)
-- this site does not use cookies banner > card on the bottom right
 
 ### Priority 3
 

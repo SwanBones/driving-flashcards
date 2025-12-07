@@ -1,7 +1,5 @@
-import { Button, Card, Modal, Switch, Tooltip, message } from "antd";
+import { Button, Modal, Switch, Tooltip, message } from "antd";
 import { useQuestions } from "../stores/questionStore";
-import { useMemo } from "react";
-import { compressBooleans } from "../utils/encoding";
 import { CloseOutlined, CopyOutlined } from "@ant-design/icons";
 type Props = {
   isOpen: boolean;
@@ -10,8 +8,12 @@ type Props = {
 };
 function SettingsModal(props: Props) {
   const { onCancel, isOpen, progressCode } = props;
-  const { uncheckQuestions, checkedQuestions, setTrackQuestions } =
-    useQuestions();
+  const {
+    uncheckQuestions,
+    checkedQuestions,
+    setTrackQuestions,
+    setSeparateVerifs,
+  } = useQuestions();
   const handleReset = () => {
     uncheckQuestions(Array.from(checkedQuestions));
   };
@@ -55,6 +57,16 @@ function SettingsModal(props: Props) {
             title="Suivi des questions"
           />
           <p className="text-sm"> Suivi des questions</p>
+        </div>
+        <div className="flex flex-row items-center gap-2">
+          <Switch
+            onChange={(checked) => setSeparateVerifs(checked)}
+            defaultChecked={false}
+            title="Suivi des questions"
+          />
+          <p className="text-sm">
+            Séparer les vérifs interieures et exterieures
+          </p>
         </div>
         <div className="flex flex-col w-fit self-center">
           <Button

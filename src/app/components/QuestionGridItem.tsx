@@ -40,10 +40,10 @@ function QuestionGridItem(props: Props) {
         <p>{questionGroup.group_id}</p>
         <div className="gap-1 flex flex-row justify-center items-center absolute bottom-4">
           {checkedQuestions.has(questionGroup.questions.VERIF) && (
-            <div className={classNames(tagClassName, "bg-red-600")} />
+            <div className={classNames(tagClassName, "bg-pink-300")} />
           )}
           {checkedQuestions.has(questionGroup.questions.QSER) && (
-            <div className={classNames(tagClassName, "bg-green-600")} />
+            <div className={classNames(tagClassName, "bg-lime-500")} />
           )}
           {checkedQuestions.has(questionGroup.questions.FirstAid) && (
             <div className={classNames(tagClassName, "bg-yellow-400")} />

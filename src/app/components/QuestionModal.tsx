@@ -19,6 +19,9 @@ function QuestionModal(props: Props) {
     setShowAnswers([]);
     onCancel();
   };
+  //not used cuz button is disabled
+
+  /*
   const handleToggleAnswers = () => {
     {
       if (showAnswers.length === 3) {
@@ -37,6 +40,7 @@ function QuestionModal(props: Props) {
       }
     }
   };
+  */
   const handleQuestionClick = (question: Question) => {
     if (showAnswers.includes(question.id)) {
       setShowAnswers((as) => as.filter((a) => a !== question.id));
@@ -60,7 +64,7 @@ function QuestionModal(props: Props) {
             <QuestionCardItem
               key={`question-modal-${question.id}`}
               question={question}
-              checkMarkClassname={"!text-green-600"}
+              checkMarkClassname={"!text-lime-500"}
               handleQuestionClick={handleQuestionClick}
               showAnswers={showAnswers}
             />
@@ -77,25 +81,3 @@ function QuestionModal(props: Props) {
 }
 
 export default QuestionModal;
-
-{
-  /* <Tooltip
-                      title="Décocher cette question"
-                      mouseEnterDelay={1}
-                      placement="right"
-                    >
-                      <button
-                        onClick={(e) => handleUncheckQuestion(e, question.id)}
-                        className=" p-2 hover:cursor-pointer relative inline-flex items-center justify-center overflow-hidden w-10  font-medium text-neutral-200"
-                      >
-                        <div className="translate-x-0 transition group-hover:translate-x-[300%]">
-                          <CheckOutlined className="!text-green-600" />
-                        </div>
-                        <div className="absolute -translate-x-[300%] transition group-hover:translate-x-0">
-                          <div className=" hover:opacity-70 transition-opacity duration-100  group-hover:flex  ">
-                            <CloseCircleFilled />
-                          </div>
-                        </div>
-                      </button>
-                    </Tooltip> */
-}

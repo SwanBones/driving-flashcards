@@ -4,7 +4,9 @@ import { questionGroups } from "@/groups";
 
 export interface QuestionsState {
   trackQuestions: boolean;
+  separateVerifs: boolean;
   setTrackQuestions: (newBool: boolean) => void;
+  setSeparateVerifs: (newBool: boolean) => void;
   questions: Question[];
   questionGroups: any[]; // replace with actual type if you have one
   checkedQuestions: Set<number>;
@@ -17,7 +19,9 @@ export interface QuestionsState {
 
 export const useQuestions = create<QuestionsState>((set) => ({
   trackQuestions: true,
+  separateVerifs: false,
   setTrackQuestions: (newBool) => set(() => ({ trackQuestions: newBool })),
+  setSeparateVerifs: (newBool) => set(() => ({ separateVerifs: newBool })),
   questions: questions as Question[],
   questionGroups,
   checkedQuestions: new Set(),
