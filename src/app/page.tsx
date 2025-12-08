@@ -101,7 +101,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex min-h-screen flex-col flex-inline gap-4 md:px-20 py-10 items-center justify-center bg-zinc-50 font-sans">
+    <div className="flex min-h-screen flex-col flex-inline gap-4 md:px-20 py-14 md:py-10 items-center justify-center bg-zinc-50 font-sans">
       {isInfoCardOpen && (
         <div className="fixed bottom-0 right-0 m-4 bg-white rounded-xl p-4  z-10 max-w-100 shadow-lg ">
           <div className="flex flex-row justify-between items-center gap-2 ">
