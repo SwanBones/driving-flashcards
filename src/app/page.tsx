@@ -118,9 +118,8 @@ export default function Home() {
             Eh wi! :D Ta progression est enregistrée dans l'URL, pense à
             enregistrer le nouvel URl à la fin de ta séance (Dans les paramètres{" "}
             <span className="underline">en haut à droite de la page</span>
-            ). Il contient toutes tes données de sauvegarde, c'est à dire qu'ils
-            ne sont pas stockées dans une base de données obscure. Bonnes
-            révisions! :)
+            ). C'est à dire que tes données ne sont pas stockées dans une base
+            de données obscure. Bonnes révisions! :)
           </p>
         </div>
       )}
