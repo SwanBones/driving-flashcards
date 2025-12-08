@@ -1,12 +1,15 @@
-import { Button, Modal, Switch, Tooltip, message } from "antd";
+import { Button, Modal, Switch, Tooltip } from "antd";
 import { useQuestions } from "../stores/questionStore";
+import { App } from "antd";
 import { CloseOutlined, CopyOutlined } from "@ant-design/icons";
+
 type Props = {
   isOpen: boolean;
   onCancel: () => void;
   progressCode: string;
 };
 function SettingsModal(props: Props) {
+  const { message } = App.useApp();
   const { onCancel, isOpen, progressCode } = props;
   const {
     uncheckQuestions,
@@ -16,6 +19,14 @@ function SettingsModal(props: Props) {
   } = useQuestions();
   const handleReset = () => {
     uncheckQuestions(Array.from(checkedQuestions));
+  };
+  const handleCopy = () => {
+    const link = `https://verif-quiz.web.app/?progress=${progressCode}`;
+
+    navigator.clipboard
+      .writeText(link)
+      .then(() => message.success("Copié dans le presse-papiers !"))
+      .catch(() => message.error("Erreur lors de la copie"));
   };
 
   return (
@@ -28,21 +39,11 @@ function SettingsModal(props: Props) {
             style={{ padding: 24 }}
             variant="filled"
             color="default"
-            onClick={() => {
-              const link = `http://localhost:3000/?progress=${progressCode}`;
-              navigator.clipboard
-                .writeText(link)
-                .then(() => {
-                  message.success("Copié dans le presse-papiers !");
-                })
-                .catch(() => {
-                  message.error("Échec de la copie !");
-                });
-            }}
+            onClick={handleCopy}
           >
-            <div className="flex justify-between flex-row w-full">
-              <p>
-                http://localhost:3000/
+            <div className="flex justify-between flex-row w-full truncate">
+              <p className="truncate">
+                https://verif-quiz.web.app/
                 <span className="text-zinc-400">{`?progress=${progressCode}`}</span>
               </p>
               <CopyOutlined className="!text-zinc-500" />

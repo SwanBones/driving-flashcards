@@ -1,14 +1,10 @@
 import { MouseEvent, useEffect, useMemo, useState } from "react";
 import { useQuestions } from "../stores/questionStore";
 import { Question } from "@/questions";
-import { Collapse, ConfigProvider, Tabs, TabsProps } from "antd";
-import {
-  CaretRightOutlined,
-  CheckOutlined,
-  RightOutlined,
-} from "@ant-design/icons";
+import { Collapse, Radio } from "antd";
+import { RightOutlined } from "@ant-design/icons";
 import UncheckableBox from "./UncheckableBox";
-import classNames from "classnames";
+import { CheckboxGroupProps, CheckboxOptionType } from "antd/es/checkbox";
 
 type QuestionListItem = {
   question: Question;
@@ -37,13 +33,6 @@ function QuestionList() {
     useQuestions();
 
   const [activeKey, setActiveKey] = useState<string>("1");
-  const tabColor = {
-    "1": "#e95ca9ff",
-    "2": "#e95ca9ff",
-    "3": "#52c41a",
-    "4": "#ec8611ff",
-    "5": "#e95ca9ff",
-  }[activeKey];
 
   const handleUncheckQuestion = (id: number) => {
     uncheckQuestions([id]);
@@ -163,117 +152,71 @@ function QuestionList() {
         }),
     [questions]
   );
-  const verifs = separateVerifs
-    ? [
-        {
-          key: "1",
-          label: <p className="hover:text-pink-600">Vérifications Int.</p>,
-          children: (
-            <Collapse
-              bordered={false}
-              expandIcon={({ isActive }) => (
-                <RightOutlined rotate={isActive ? 90 : 0} />
-              )}
-              onChange={(c) =>
-                checkQuestions(c.map((idString) => Number(idString.slice(3))))
-              }
-              items={VerifIntQuestionNodes}
-            />
-          ),
-        },
-        {
-          key: "2",
-          label: <p className="hover:text-pink-600">Vérifications Ext.</p>,
-          children: (
-            <Collapse
-              bordered={false}
-              expandIcon={({ isActive }) => (
-                <RightOutlined rotate={isActive ? 90 : 0} />
-              )}
-              onChange={(c) =>
-                checkQuestions(c.map((idString) => Number(idString.slice(3))))
-              }
-              items={VerifExtQuestionNodes}
-            />
-          ),
-        },
-      ]
-    : [
-        {
-          key: "5",
-          label: <p className="hover:text-pink-600">Vérifications</p>,
-          children: (
-            <Collapse
-              bordered={false}
-              expandIcon={({ isActive }) => (
-                <RightOutlined rotate={isActive ? 90 : 0} />
-              )}
-              onChange={(c) =>
-                checkQuestions(c.map((idString) => Number(idString.slice(3))))
-              }
-              items={VerifQuestionNodes}
-            />
-          ),
-        },
-      ];
 
-  const items: TabsProps["items"] = [
-    ...verifs,
-    {
-      key: "3",
-      label: <p className="hover:text-lime-500">Questions Variées</p>,
-      children: (
-        <Collapse
-          bordered={false}
-          expandIcon={({ isActive }) => (
-            <RightOutlined rotate={isActive ? 90 : 0} />
-          )}
-          onChange={(c) =>
-            checkQuestions(c.map((idString) => Number(idString.slice(3))))
-          }
-          items={QserQuestionNodes}
-        />
-      ),
-    },
-    {
-      key: "4",
-      label: <p className="hover:text-orange-400">Premiers Secours</p>,
-      children: (
-        <Collapse
-          bordered={false}
-          expandIcon={({ isActive }) => (
-            <RightOutlined rotate={isActive ? 90 : 0} />
-          )}
-          onChange={(c) =>
-            checkQuestions(c.map((idString) => Number(idString.slice(3))))
-          }
-          items={FirstAidQuestionNodes}
-        />
-      ),
-    },
+  const nodeList = useMemo(
+    () => ({
+      "1": VerifIntQuestionNodes,
+      "2": VerifExtQuestionNodes,
+      "3": QserQuestionNodes,
+      "4": FirstAidQuestionNodes,
+      "5": VerifQuestionNodes,
+    }),
+    [activeKey, questions]
+  );
+  const options: CheckboxGroupProps<string>["options"] = [
+    ...(separateVerifs
+      ? [
+          { label: "Vérifs Int.", value: "1" },
+          { label: "Vérifs Ext.", value: "2" },
+        ]
+      : [{ label: "Vérifications", value: "5" }]),
+    { label: "Questions Variées", value: "3" },
+    { label: "1ers Secours", value: "4" },
   ];
-
   return (
-    <ConfigProvider
-      theme={{
-        components: {
-          Tabs: {
-            itemActiveColor: tabColor,
-            itemSelectedColor: tabColor,
-            inkBarColor: tabColor,
-          },
-        },
-      }}
-    >
-      <Tabs
-        activeKey={activeKey}
-        onChange={setActiveKey}
-        defaultActiveKey="1"
-        items={items}
-        className="w-full max-w-4xl custom-tabs"
-        centered
+    <div className=" max-w-5xl items-center flex flex-col gap-8 text-center">
+      <Radio.Group
+        onChange={(e) => setActiveKey(e.target.value)}
+        value={activeKey}
+      >
+        {(options as CheckboxOptionType<string>[]).map((option) => {
+          const color = {
+            "1": "#e95ca9ff",
+            "2": "#e95ca9ff",
+            "3": "#52c41a",
+            "4": "#ec8611ff",
+            "5": "#e95ca9ff",
+          }[option.value];
+
+          const isActive = activeKey === option.value;
+
+          return (
+            <Radio.Button
+              key={option.value}
+              value={option.value}
+              style={{
+                backgroundColor: isActive ? color : undefined,
+                borderColor: isActive ? color : undefined,
+                color: isActive ? "#fff" : undefined,
+              }}
+            >
+              {option.label}
+            </Radio.Button>
+          );
+        })}
+      </Radio.Group>
+
+      <Collapse
+        bordered={false}
+        expandIcon={({ isActive }) => (
+          <RightOutlined rotate={isActive ? 90 : 0} />
+        )}
+        onChange={(c) =>
+          checkQuestions(c.map((idString) => Number(idString.slice(3))))
+        }
+        items={nodeList[activeKey as "1" | "2" | "3" | "4" | "5"]}
       />
-    </ConfigProvider>
+    </div>
   );
 }
 export default QuestionList;

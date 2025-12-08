@@ -115,12 +115,12 @@ export default function Home() {
           </div>
 
           <p>
-            Eh wi! :D Pour sauvegarder ton progrès, il faudra aller dans les
-            paramètres en{" "}
-            <span className="underline">haut à droite de la page</span>, ou tout
-            simplement, copie le lien URL. Il contient toutes tes données de
-            sauvegarde et ne sont pas stockées dans une base de données obscure.
-            Bonnes révisions! :)
+            Eh wi! :D Ta progression est enregistrée dans l'URL, pense à
+            enregistrer le nouvel URl à la fin de ta séance (Dans les paramètres{" "}
+            <span className="underline">en haut à droite de la page</span>
+            ). Il contient toutes tes données de sauvegarde, c'est à dire qu'ils
+            ne sont pas stockées dans une base de données obscure. Bonnes
+            révisions! :)
           </p>
         </div>
       )}
@@ -154,6 +154,9 @@ export default function Home() {
         </div>
 
         <h1 className="mt-4 text-center">Questions uniques</h1>
+        <p className="text-xs text-zinc-400 italic -mt-7 text-center">
+          Toutes les questions, regroupées
+        </p>
 
         <QuestionList />
         <LegalInfo />

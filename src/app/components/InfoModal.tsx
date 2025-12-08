@@ -1,6 +1,5 @@
 import { LinkOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
-import Image from "next/image";
 type Props = {
   isOpen: boolean;
   onClose: () => void;
@@ -32,9 +31,7 @@ function InfoModal(props: Props) {
 
         <div className="items-center gap-4 mt-10 flex flex-col">
           <div className="overflow-hidden rounded-full h-30 w-30 ">
-            <Image
-              width={120}
-              height={120}
+            <img
               alt="A photo of me!"
               src="/pfp.jpg"
               className="h-full w-full object-cover h-30 w-30"

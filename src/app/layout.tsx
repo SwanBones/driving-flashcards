@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Suspense } from "react";
+import { App } from "antd";
 
 export const metadata: Metadata = {
   title: "QSER Révisions - SwanBones",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <Suspense>
-        <body>{children}</body>
+        <body>
+          <App>{children} </App>
+        </body>
       </Suspense>
     </html>
   );
