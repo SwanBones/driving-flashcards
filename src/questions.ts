@@ -6,6 +6,7 @@ export type Question = {
   answer: string;
   checked?: boolean;
   context?: string;
+  image?: string;
 };
 //paste be be careful, removes context.
 export const questions = [
@@ -57,7 +58,7 @@ export const questions = [
     question:
       "Mettez le rétroviseur intérieur en position \"nuit\". Si le rétroviseur de l'accompagnateur gène la manipulation du dispositif, l'explication suffit.",
     answer:
-      'Si le véhicule possède un système automatique de mise en position "nuit" du rétroviseur intérieur, le candidat l\'indique.',
+      "Si le véhicule possède un système automatique de mise en position \"nuit\" du rétroviseur intérieur, le candidat l'indique. C'est la petite languette qui se situe juste en dessous du rétroviseur intérieur, il suffit de la tirer vers soi.",
   },
   {
     id: 8,

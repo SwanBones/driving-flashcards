@@ -23,4 +23,3 @@ Quelques réponses ont été modifiés pour améliorer la clarté et la compréh
 
 - iframe embed
   - let people disable my donate button with a queryparam
-- author info , copyright, github link and paypal on sidebar
