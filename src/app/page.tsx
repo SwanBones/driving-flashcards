@@ -34,8 +34,10 @@ export default function Home() {
   const [isInfoCardOpen, setIsInfoCardOpen] = useState<boolean>(true);
   const [messageApi, contextHolder] = message.useMessage();
   const searchParams = useSearchParams();
-
   const saveDataParam = searchParams.get("saveData");
+
+  const hideGrid = searchParams.get("hideGrid") === "true";
+  const hideList = searchParams.get("hideList") === "true";
 
   const saveCode = useMemo(() => {
     if (!checkQuestions && !saveDataParam) return;
@@ -162,27 +164,40 @@ export default function Home() {
           className="self-end h-8 !p-5"
         />
       </div>
-      <div className="max-w-6xl flex flex-col items-center gap-8 ">
-        <h1 className="text-center">Groupes de questions</h1>
-        <p className="text-xs text-zinc-400 italic -mt-7 text-center">
-          Les questions se répètent beaucoup. Descends pour les questions
-          individuelles!
-        </p>
-        <div className="bg-zinc-100 rounded-xl p-2 sm:p-10">
-          <QuestionGrid
-            questionGroups={questionGroups}
-            onItemClick={handleQuestionGroupClick}
-          />
+      {!hideGrid && (
+        <div className="max-w-6xl flex flex-col items-center gap-8 ">
+          <h1 className="text-center">Groupes de questions</h1>
+          <p className="text-xs text-zinc-400 italic -mt-7 text-center">
+            Les questions se répètent beaucoup. Descends pour les questions
+            individuelles!
+          </p>
+          <div className="bg-zinc-100 rounded-xl p-2 sm:p-10">
+            <QuestionGrid
+              questionGroups={questionGroups}
+              onItemClick={handleQuestionGroupClick}
+            />
+          </div>
         </div>
+      )}
+      {!hideList && (
+        <div className="max-w-6xl flex flex-col items-center gap-8 ">
+          <h1 className="mt-4 text-center">Questions uniques</h1>
+          <p className="text-xs text-zinc-400 italic -mt-7 text-center">
+            Toutes les questions, regroupées
+          </p>
 
-        <h1 className="mt-4 text-center">Questions uniques</h1>
-        <p className="text-xs text-zinc-400 italic -mt-7 text-center">
-          Toutes les questions, regroupées
-        </p>
-
-        <QuestionList />
-        <LegalInfo />
-      </div>
+          <QuestionList />
+          <LegalInfo />
+        </div>
+      )}
+      {hideGrid && hideList && (
+        <div className="max-w-6xl flex flex-col items-center gap-4 ">
+          <p>Bon bah du coup il y a plus rien à afficher, bravo :))</p>
+          <p className="text-xs text-zinc-600 italic">
+            (pense à changer l'URL pour qu'elle affiche au moins une interface )
+          </p>
+        </div>
+      )}
       <SettingsModal
         saveCode={saveCode}
         isOpen={isSettingsModalOpen}

@@ -32,7 +32,7 @@ function ShareModal(props: Props) {
         <div className="text-center">
           <p className="bg-zinc-100 rounded-md p-4 text-left">
             {`<iframe
-            src="https://verif-quiz.web.app/"
+            src="https://verif-quiz.web.app/?hideList=false&hideGrid=false"
             width="700"
             height="500"
           ></iframe>`}
