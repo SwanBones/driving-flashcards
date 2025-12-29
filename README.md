@@ -19,8 +19,14 @@ Exemple:
 
 > Montrez l'orifice de remplissage du produit lave-glace.
 
-a été remplacé par
+et
 
 > Montrez où s'effectue le remplissage du produit lave-glace.
 
-qui d'ailleurs existait déjà dans la banque de données. En présumant que l'élève comprendra la première phrase et adaptera la bonne réponse, tout devrait bien se passer. :)
+a été unifié pour avoir seulement
+
+> Montrez où s'effectue le remplissage du produit lave-glace.
+
+Car la question est essentiellement la même. D'autres sont plus discrets, car certaines questions terminaient avec un point alors qu'on retrouvait la même autre part mais avec un point d'interrogation.
+
+En présumant que l'élève comprendra la première phrase et adaptera la bonne réponse, tout devrait bien se passer. :)
