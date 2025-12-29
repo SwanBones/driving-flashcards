@@ -10,6 +10,7 @@ import {
   CloseOutlined,
   InfoCircleTwoTone,
   SettingOutlined,
+  ShareAltOutlined,
 } from "@ant-design/icons";
 import { Button, message } from "antd";
 import SettingsModal from "./components/SettingsModal";
@@ -17,6 +18,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { compressBooleans, decompressBooleans } from "./utils/encoding";
 import InfoModal from "./components/InfoModal";
 import LegalInfo from "./components/LegalInfo";
+import ShareModal from "./components/ShareModal";
 
 export default function Home() {
   const { questions, questionGroups, checkQuestions, checkedQuestions } =
@@ -28,6 +30,7 @@ export default function Home() {
   const [isSettingsModalOpen, setIsSettingsModalOpen] =
     useState<boolean>(false);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState<boolean>(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isInfoCardOpen, setIsInfoCardOpen] = useState<boolean>(true);
   const [messageApi, contextHolder] = message.useMessage();
   const searchParams = useSearchParams();
@@ -35,7 +38,7 @@ export default function Home() {
   const saveDataParam = searchParams.get("saveData");
 
   const saveCode = useMemo(() => {
-    if (!saveDataParam) return;
+    if (!checkQuestions && !saveDataParam) return;
     const numberOfQuestions = questions.length;
     let arrFalse: boolean[] = Array(numberOfQuestions).fill(false);
     checkedQuestions.forEach((id) => (arrFalse[id - 1] = true));
@@ -73,6 +76,9 @@ export default function Home() {
   };
   const handleSettingsClick = () => {
     setIsSettingsModalOpen(true);
+  };
+  const handleShareClick = () => {
+    setIsShareModalOpen(true);
   };
   const handleInfoClick = () => {
     setIsInfoModalOpen(true);
@@ -150,6 +156,12 @@ export default function Home() {
           onClick={handleInfoClick}
           className="self-end h-8 !p-5"
         />
+        <Button
+          icon={<ShareAltOutlined />}
+          variant="text"
+          onClick={handleShareClick}
+          className="self-end h-8 !p-5"
+        />
       </div>
       <div className="max-w-6xl flex flex-col items-center gap-8 ">
         <h1 className="text-center">Groupes de questions</h1>
@@ -175,7 +187,7 @@ export default function Home() {
       <SettingsModal
         saveCode={saveCode}
         isOpen={isSettingsModalOpen}
-        onCancel={handleSettingsClose}
+        onClose={handleSettingsClose}
       />
       <QuestionModal
         questionGroup={modalQuestionGroup}
@@ -186,6 +198,10 @@ export default function Home() {
       <InfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
+      />
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
       />
       {contextHolder}
     </div>
