@@ -63,7 +63,7 @@ function SettingsModal(props: Props) {
             defaultChecked
             title="Suivi des questions"
           />
-          <p className="text-sm"> Activer le suivi des questions</p>
+          <p className="text-sm"> Activer le suivi de progression</p>
         </div>
         <div className="flex flex-row items-center gap-2">
           <Switch

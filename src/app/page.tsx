@@ -149,17 +149,16 @@ export default function Home() {
           onClick={handleSettingsClick}
           className="self-end h-8 !p-5"
         />
-
-        <Button
-          icon={<InfoCircleTwoTone twoToneColor={"#7627f5ff"} />}
-          variant="text"
-          onClick={handleInfoClick}
-          className="self-end h-8 !p-5"
-        />
         <Button
           icon={<ShareAltOutlined />}
           variant="text"
           onClick={handleShareClick}
+          className="self-end h-8 !p-5"
+        />
+        <Button
+          icon={<InfoCircleTwoTone twoToneColor={"#7627f5ff"} />}
+          variant="text"
+          onClick={handleInfoClick}
           className="self-end h-8 !p-5"
         />
       </div>
