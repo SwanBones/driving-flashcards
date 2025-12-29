@@ -63,7 +63,34 @@ function QuestionList() {
               />
             ),
 
-            children: <p>{question.answer}</p>,
+            children: (
+              <div className="flex flex-col items-center">
+                <p className="text-left">{question.answer}</p>
+                {question.img && (
+                  <img
+                    src={`/answer_img/${question.img?.[0]}`}
+                    alt="Image d'aide"
+                    className="max-h-30 rounded-xl mt-4 w-fit"
+                  />
+                )}
+                {question.imgCredit && (
+                  <a
+                    className="!text-gray-500 decoration-none italic text-xs text-center mt-2"
+                    target="_blank"
+                    href={question.imgCredit}
+                  >
+                    Source Image: {question.imgCredit}
+                  </a>
+                )}
+                {question.img?.[1] && (
+                  <img
+                    src={`/answer_img/${question.img?.[1]}`}
+                    alt="Image de Rappel"
+                    className="max-h-30 pt-6 border-t mt-4 border-zinc-300"
+                  />
+                )}
+              </div>
+            ),
           };
         }),
     [questions]
@@ -84,7 +111,34 @@ function QuestionList() {
               />
             ),
 
-            children: <p>{question.answer}</p>,
+            children: (
+              <div>
+                <p className="text-left">{question.answer}</p>
+                {question.img && (
+                  <img
+                    src={`/answer_img/${question.img?.[0]}`}
+                    alt="Image d'aide"
+                    className="max-h-30 rounded-xl mt-4"
+                  />
+                )}
+                {question.imgCredit && (
+                  <a
+                    className="!text-gray-500 decoration-none italic text-xs text-center mt-2"
+                    target="_blank"
+                    href={question.imgCredit}
+                  >
+                    Source Image: {question.imgCredit}
+                  </a>
+                )}
+                {question.img?.[1] && (
+                  <img
+                    src={`/answer_img/${question.img?.[1]}`}
+                    alt="Image de Rappel"
+                    className="max-h-30 pt-6 border-t mt-4 border-zinc-300"
+                  />
+                )}
+              </div>
+            ),
           };
         }),
     [questions]
@@ -170,7 +224,7 @@ function QuestionList() {
           { label: "Vérifs Ext.", value: "2" },
         ]
       : [{ label: "Vérifications", value: "5" }]),
-    { label: "Questions Variées", value: "3" },
+    { label: "Sécurité Routière", value: "3" },
     { label: "1ers Secours", value: "4" },
   ];
   return (

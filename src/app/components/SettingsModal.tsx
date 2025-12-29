@@ -6,11 +6,11 @@ import { CloseOutlined, CopyOutlined } from "@ant-design/icons";
 type Props = {
   isOpen: boolean;
   onCancel: () => void;
-  progressCode: string;
+  saveCode?: string;
 };
 function SettingsModal(props: Props) {
   const { message } = App.useApp();
-  const { onCancel, isOpen, progressCode } = props;
+  const { onCancel, isOpen, saveCode } = props;
   const {
     uncheckQuestions,
     checkedQuestions,
@@ -21,7 +21,9 @@ function SettingsModal(props: Props) {
     uncheckQuestions(Array.from(checkedQuestions));
   };
   const handleCopy = () => {
-    const link = `https://verif-quiz.web.app/?progress=${progressCode}`;
+    const link = saveCode
+      ? `https://verif-quiz.web.app/?saveData=${saveCode}`
+      : `https://verif-quiz.web.app/`;
 
     navigator.clipboard
       .writeText(link)
@@ -44,7 +46,7 @@ function SettingsModal(props: Props) {
             <div className="flex justify-between flex-row w-full truncate">
               <p className="truncate">
                 https://verif-quiz.web.app/
-                <span className="text-zinc-400">{`?progress=${progressCode}`}</span>
+                <span className="text-zinc-400">{`?saveData=${saveCode}`}</span>
               </p>
               <CopyOutlined className="!text-zinc-500" />
             </div>

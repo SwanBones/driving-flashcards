@@ -6,15 +6,18 @@ export type Question = {
   answer: string;
   checked?: boolean;
   context?: string;
-  image?: string;
+  img?: string[];
+  imgCredit?: string;
 };
 //paste be be careful, removes context.
 export const questions = [
   {
     id: 1,
     type: "VI",
-    question: "Montrez la commande De réglage de hauteur des feux.",
+    question: "Montrez la commande de réglage de hauteur des feux.",
     answer: "Dispositif situé en général à gauche du volant.",
+    imgCredit:
+      "https://www.actronics.fr/actualite/general/tous-les-voyants-du-tableau-de-bord",
   },
   {
     id: 2,
@@ -36,6 +39,9 @@ export const questions = [
     question: "Montrez où s'effectue le remplissage du produit lave-glace.",
     answer:
       "Le candidat ouvre le capot et montre le bocal. Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
+    img: ["lave-glace.jpg"],
+    imgCredit:
+      "https://www.vroomly.com/blog/liquide-lave-glace-emplacement-utilisation-et-prix/",
   },
   {
     id: 5,
@@ -58,7 +64,8 @@ export const questions = [
     question:
       "Mettez le rétroviseur intérieur en position \"nuit\". Si le rétroviseur de l'accompagnateur gène la manipulation du dispositif, l'explication suffit.",
     answer:
-      "Si le véhicule possède un système automatique de mise en position \"nuit\" du rétroviseur intérieur, le candidat l'indique. C'est la petite languette qui se situe juste en dessous du rétroviseur intérieur, il suffit de la tirer vers soi.",
+      'Si le véhicule possède un système automatique de mise en position "nuit" du rétroviseur intérieur, le candidat l\'indique.',
+    img: ["retro-nuit.jpg"],
   },
   {
     id: 8,
@@ -71,15 +78,18 @@ export const questions = [
     id: 9,
     type: "FirstAid",
     question:
-      "Comment est composé le signal d'alerte du Système d'alerte et d'Information des Populations (SAIP) diffusé par les sirènes ?",
+      "Comment est composé le signal d'alerte du Système d'Alerte et d'Information des Populations (SAIP) diffusé par les sirènes ?",
     answer:
-      "Il se compose de deux codes distincts : - le Signal National d'alerte (SNA), variation du signal sur trois cycles successifs. - Le signal de fin d'alerte, signal continu.",
+      "Il se compose de deux codes distincts : - le Signal National d'Alerte (SNA), variation du signal sur trois cycles successifs. - Le signal de fin d'alerte, signal continu.",
+    img: ["sna.jpg"],
   },
   {
     id: 10,
     type: "VE",
     question: "Contrôlez l'état du flanc sur l'un des pneumatiques.",
-    answer: "En bon état (toute anomalie doit être signalée).",
+    answer:
+      "Toute anomalie doit être signalée. Aide: Il peut y avoir des bosses, petites déchirures... Flanc du pneumatique = la face du côté du pneu",
+    img: ["flanc-pneu.jpg"],
   },
   {
     id: 11,
@@ -102,7 +112,7 @@ export const questions = [
     type: "VI",
     question:
       "Faites fonctionner les essuie-glaces avants du véhicule sur la position la plus rapide.",
-    answer: "",
+    answer: "vrrr vrrr vrr vrrr vrr",
   },
   {
     id: 14,
@@ -145,7 +155,7 @@ export const questions = [
     type: "VI",
     question: "Vérifiez la présence du gilet de haute visibilité.",
     answer:
-      'Le candidat doit indiquer où il se trouve sans obligation de le sortir. Le terme " gilet jaune" peut être utilisé si le candidat ne comprend pas.',
+      'Le candidat doit montrer où il se trouve sans obligation de le sortir. Le terme "gilet jaune" peut être utilisé si le candidat ne comprend pas. Aide: Pour moi, il était dans la portière, pense à vérifier avant l\'examen.',
   },
   {
     id: 20,
@@ -170,6 +180,7 @@ export const questions = [
       "Montrez où s'effectue le contrôle du niveau du liquide de frein.",
     answer:
       "Le candidat montre que le niveau est entre le mini et le maxi. Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
+    img: ["liquide-frein.jpg"],
   },
   {
     id: 23,
@@ -191,7 +202,11 @@ export const questions = [
     type: "VI",
     question:
       "Vérifiez la présence du certificat d'immatriculation du véhicule (ou carte grise).",
-    answer: "La photocopie est acceptée.",
+    answer:
+      "La photocopie est acceptée. Aide: Peut être dans la boite à gant, tip: vérifie avant l'examen.",
+    img: ["carte-grise.jpg"],
+    imgCredit:
+      "https://img.ants.gouv.fr/c49addd6-5fa2-4f8b-b9d3-adc75283d153.jpg",
   },
   {
     id: 26,
@@ -212,7 +227,10 @@ export const questions = [
     id: 28,
     type: "VE",
     question: "Contrôlez l'état de tous les balais d'essuie-glace du véhicule.",
-    answer: "",
+    answer: "Toute anomalie doit être signalée.",
+    img: ["balais-glace.jpg"],
+    imgCredit:
+      "https://www.vroomly.com/blog/balai-dessuie-glace-tout-ce-quil-faut-savoir/",
   },
   {
     id: 29,
@@ -233,6 +251,7 @@ export const questions = [
     type: "VI",
     question: "Montrez l'indicateur de niveau de carburant.",
     answer: "",
+    img: ["fuel-indicator.jpg"],
   },
   {
     id: 32,
@@ -256,6 +275,7 @@ export const questions = [
       "Montrez où s'effectue le remplissage du liquide de refroidissement.",
     answer:
       "Le candidat ouvre le capot et montre le bocal. Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
+    img: ["liquide-refroid.jpg"],
   },
   {
     id: 35,
@@ -277,6 +297,7 @@ export const questions = [
     question:
       "Actionnez le dégivrage de la lunette arrière et montrez le voyant ou le repère correspondant.",
     answer: "",
+    img: ["antifog-back.jpg", "rappel-backfront.jpg"],
   },
   {
     id: 38,
@@ -299,7 +320,7 @@ export const questions = [
     question:
       "Contrôlez l'état, la propreté et le fonctionnement de tous les clignotants côté trottoir.",
     answer:
-      "Vérification des clignotants propres, en bon état et fonctionnent (toute anomalie doit être signalée).",
+      "Vérification des clignotants, propres, en bon état et fonctionnent (toute anomalie doit être signalée).",
   },
   {
     id: 41,
@@ -321,12 +342,13 @@ export const questions = [
     question:
       "Montrez le voyant d'alerte signalant une pression insuffisante d'huile dans le moteur.",
     answer: "",
+    img: ["huile-moteur.jpg"],
   },
   {
     id: 44,
     type: "QSER",
     question:
-      "Quelles sont les conditions à respecter pour contrôler le niveau d'huile ?",
+      "Quelles sont les conditions à respecter pour contrôler/complêter le niveau d'huile ?",
     answer: "Moteur froid et sur un terrain plat.",
   },
   {
@@ -363,7 +385,8 @@ export const questions = [
     id: 49,
     type: "VI",
     question: "Vérifiez la présence de l'éthylotest.",
-    answer: "",
+    answer:
+      "Aide: Pour moi, il était dans la portière, pense à vérifier avant l'examen",
   },
   {
     id: 50,
@@ -387,7 +410,9 @@ export const questions = [
     question:
       "Contrôlez l'état, la propreté et le fonctionnement des feux de détresse à l'avant et à l'arrière.",
     answer:
-      "Vérification des feux, propres, en bon état et fonctionnent (toute anomalie doit être signalée).",
+      "Allumer les feux de détresse, sortir du véhicule. Vérification des feux, propres, en bon état et fonctionnent (toute anomalie doit être signalée).",
+    img: ["detresse-icon.jpg"],
+    imgCredit: "https://fr.wikipedia.org/wiki/Feux_de_d%C3%A9tresse",
   },
   {
     id: 53,
@@ -446,6 +471,10 @@ export const questions = [
     question: "Positionnez la commande pour diriger l'air vers le pare-brise.",
     answer:
       "La position auto (désembuage automatique) peut être utilisée si le véhicule en est équipé.",
+
+    img: ["antifog-front.jpg", "rappel-backfront.jpg"],
+    imgCredit:
+      "https://www.ornikar.com/code/cours/mecanique-vehicule/differents-circuits/degivrage-desembuage?srsltid=AfmBOop-cO-APAbZqmnOMeVp_TYTmq2_Nlbr2jA4IXJVg9wFr520ZuMg",
   },
   {
     id: 61,
@@ -470,6 +499,9 @@ export const questions = [
       "Montrez où doit s'effectuer le contrôle du niveau d'huile moteur.",
     answer:
       "Le candidat montre la jauge. Pas de manipulation exigée. Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
+    img: ["oil-dipstick.jpg"],
+    imgCredit:
+      "https://www.allroadvillage.com/la-verification-du-niveau-huile-moteur-sur-un-4x4-xml-392_488-1594.html",
   },
   {
     id: 64,
@@ -481,7 +513,7 @@ export const questions = [
     id: 65,
     type: "FirstAid",
     question:
-      "Comment est diffusée l'alerte émise par le Signal d'alerte et d'Information aux Populations (SAIP) ?",
+      "Comment est diffusée l'alerte émise par le Signal d'Alerte et d'Information aux Populations (SAIP) ?",
     answer:
       "Grâce aux sirènes, aux médias tels que Radio France et France Télévision ou encore grâce à l'application SAIP.",
   },
@@ -490,6 +522,7 @@ export const questions = [
     type: "VI",
     question: "Montrez le voyant d'alerte signalant un défaut de batterie.",
     answer: "",
+    img: ["battery.jpg"],
   },
   {
     id: 67,
@@ -525,15 +558,15 @@ export const questions = [
     type: "FirstAid",
     question:
       "Pourquoi faut-il pratiquer immédiatement une réanimation cardio-pulmonaire sur une victime en arrêt cardiaque ?",
-    answer:
-      "Car les lésions du cerveau, surviennent dès les premières minutes.",
+    answer: "Car les lésions du cerveau surviennent dès les premières minutes.",
   },
   {
     id: 72,
     type: "VI",
     question:
       "De quelle couleur est le voyant qui indique une défaillance du système de freinage ?",
-    answer: "",
+    answer: "Rouge",
+    img: ["defaillance-frein.jpg"],
   },
   {
     id: 73,
@@ -565,6 +598,7 @@ export const questions = [
     question:
       "Montrez le voyant d'alerte signalant une température trop élevée du liquide de refroidissement.",
     answer: "",
+    img: ["cooling-liquid.jpg"],
   },
   {
     id: 77,
@@ -608,6 +642,7 @@ export const questions = [
     question:
       "Montrez le voyant signalant la mauvaise fermeture d'une portière.",
     answer: "",
+    img: ["open-doors.jpg"],
   },
   {
     id: 83,
@@ -650,13 +685,14 @@ export const questions = [
     type: "VI",
     question: "Actionnez les feux de détresse.",
     answer: "",
+    img: ["detresse-icon.jpg"],
   },
   {
     id: 89,
     type: "VE",
     question:
       "Sur le flanc d'un pneumatique, désignez le repère du témoin d'usure de la bande de roulement.",
-    answer: "",
+    answer: "", //picture needed
   },
   {
     id: 90,
@@ -672,6 +708,7 @@ export const questions = [
     question:
       "Montrez la commande permettant d'actionner le régulateur de vitesse.",
     answer: "",
+    img: ["regulator.jpg"],
   },
   {
     id: 92,
@@ -685,13 +722,13 @@ export const questions = [
     type: "VE",
     question:
       "Ouvrez la trappe à carburant et/ou vérifiez la bonne fermeture du bouchon.",
-    answer: "",
+    answer: "", //picture needed
   },
   {
     id: 94,
     type: "VI",
     question: "Sans l'actionner, montrez la commande de l'avertisseur sonore.",
-    answer: "",
+    answer: "Aide: Sans l'actionner!",
   },
   {
     id: 95,
@@ -714,6 +751,7 @@ export const questions = [
     question: "Montrez où s'effectue le remplissage de l'huile moteur.",
     answer:
       "Le candidat montre le bouchon de remplissage. Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
+    img: ["remplissage-huile.jpg"],
   },
   {
     id: 98,
@@ -729,6 +767,7 @@ export const questions = [
     question:
       "Montrez la commande permettant de désactiver l'airbag du passager avant.",
     answer: "",
+    img: ["airbag-off.png"],
   },
   {
     id: 100,
@@ -743,13 +782,14 @@ export const questions = [
     type: "VE",
     question:
       "A l'aide de la plaque indicative, donnez la pression préconisée pour les pneumatiques arrières, véhicule chargé.",
-    answer: "",
+    answer:
+      "Aide: La plaque est en général dans une portière, à toi de la trouver dans le véhicule et de trouver la bonne valeur",
   },
   {
     id: 102,
     type: "QSER",
     question:
-      "A quelle fréquence est-il préconisé de vérifier la pression des pneus ?",
+      "A quelle fréquence est-il préconisé de vérifier la pression d'air des pneumatiques ?",
     answer:
       "Chaque mois, pour une utilisation normale de son véhicule, et avant chaque long trajet.",
   },
@@ -759,6 +799,7 @@ export const questions = [
     question:
       "Montrez le voyant signalant l'absence de bouclage de la ceinture de sécurité du conducteur.",
     answer: "",
+    img: ["no-seatbelt.jpg"],
   },
   {
     id: 104,
@@ -769,35 +810,29 @@ export const questions = [
   },
   {
     id: 105,
-    type: "FirstAid",
-    question:
-      "Comment est composé le signal d'alerte du Système d'Alerte et d'Information des Populations (SAIP) diffusé par les sirènes ?",
-    answer:
-      "Il se compose de deux codes distincts : - Le Signal National d'Alerte (SNA), variation du signal sur trois cycles successifs. - Le signal de fin d'alerte, signal continu.",
-  },
-  {
-    id: 106,
     type: "VE",
     question:
       "Vérifiez le fonctionnement de l'éclairage de la plaque d'immatriculation à l'arrière.",
-    answer: "Toute anomalie doit être signalée.",
+    answer:
+      "N'oubie pas d'actionner les feux de croisement pour allumer l'éclairage. Toute anomalie doit être signalée.",
   },
   {
-    id: 107,
+    id: 106,
     type: "QSER",
     question:
       "Un défaut d'éclairage de la plaque lors du contrôle technique entraîne-t-il une contre-visite ?",
     answer: "Oui.",
   },
   {
-    id: 108,
+    id: 107,
     type: "VI",
     question:
       "Vérifiez la présence de l'attestation d'assurance du véhicule et de sa vignette sur le pare-brise.",
-    answer: "",
+    answer:
+      "Aide: vérifie et demande à ton moniteur AVANT l'examen, il se peut que dans ton cas, l'attestation d'assurance soit numérique. La vignette sur le pare-brise n'est pas obligatoire d'ailleurs, donc ne panique pas si tu la trouves pas",
   },
   {
-    id: 109,
+    id: 108,
     type: "QSER",
     question:
       "Quels sont les deux autres documents obligatoires à présenter en cas de contrôle par les forces de l'ordre ?",
@@ -805,28 +840,28 @@ export const questions = [
       "Le certificat d'immatriculation et le permis de conduire. Le terme « carte grise » est accepté.",
   },
   {
-    id: 110,
+    id: 109,
     type: "FirstAid",
     question: "Qu'est ce qu'une hémorragie ?",
     answer:
       "C'est une perte de sang prolongée qui ne s'arrête pas. Elle imbibe de sang un mouchoir en quelques secondes.",
   },
   {
-    id: 111,
+    id: 110,
     type: "VE",
     question:
       "Indiquez où se situe la sécurité enfant sur l'une des portières à l'arrière du véhicule.",
-    answer: "",
+    answer: "Aide: Tu peux vérifier avant l'examen",
   },
   {
-    id: 112,
+    id: 111,
     type: "QSER",
     question:
       "Si la sécurité enfant est enclenchée, est-il possible d'ouvrir la portière arrière depuis l'extérieur ?",
     answer: "Oui.",
   },
   {
-    id: 113,
+    id: 112,
     type: "FirstAid",
     question:
       "Quels sont les risques pour une personne victime d'une hémorragie ?",
@@ -834,28 +869,29 @@ export const questions = [
       "Entraîner pour la victime une détresse circulatoire ou un arrêt cardiaque.",
   },
   {
-    id: 114,
+    id: 113,
     type: "VI",
     question:
       "Allumez le(s) feu(x) de brouillard arrière(s) et montrez le voyant correspondant.",
     answer: "",
+    img: ["brouillard-arriere.png"],
   },
   {
-    id: 115,
+    id: 114,
     type: "QSER",
     question: "Pouvez-vous les utiliser par forte pluie ?",
     answer: "Non.",
     context: "(Les feux de brouillard)",
   },
   {
-    id: 116,
+    id: 115,
     type: "FirstAid",
     question: "Quels sont les signes d'un arrêt cardiaque ?",
     answer:
       "La victime ne répond pas, ne réagit pas et ne respire pas ou présente une respiration anormale.",
   },
   {
-    id: 117,
+    id: 116,
     type: "VE",
     question:
       "Avec l'assistance de l'accompagnateur, contrôlez l'état, la propreté et le fonctionnement du ou des feux de recul.",
@@ -863,7 +899,7 @@ export const questions = [
       "Vérification des feux, propres, en bon état et qui fonctionnent (toute anomalie doit être signalée).",
   },
   {
-    id: 118,
+    id: 117,
     type: "QSER",
     question: "Quelles sont leurs deux utilités ?",
     answer:
@@ -871,21 +907,21 @@ export const questions = [
     context: "(Les feux de recul)",
   },
   {
-    id: 119,
+    id: 118,
     type: "FirstAid",
     question: "Qu'est ce qu'un défibrillateur automatisé externe (DAE) ?",
     answer:
       "C'est un appareil qui peut permettre de rétablir une activité cardiaque normale à une victime en arrêt cardiaque.",
   },
   {
-    id: 120,
+    id: 119,
     type: "VI",
     question:
       "Montrez comment régler la hauteur de l'appui-tête du siège conducteur.",
-    answer: "",
+    answer: "Montre, et puis attention de le remettre le à la bonne hauteur",
   },
   {
-    id: 121,
+    id: 120,
     type: "QSER",
     question: "Quelle est son utilité ?",
     answer:
@@ -893,14 +929,7 @@ export const questions = [
     context: "(L'appui-tête du siège conducteur)",
   },
   {
-    id: 122,
-    type: "FirstAid",
-    question: "Par quels moyens doit être réalisée l'alerte des secours ?",
-    answer:
-      "L'alerte doit être donnée à l'aide d'un téléphone portable ou, à défaut, d'un téléphone fixe, ou d'une borne d'appel d'urgence.",
-  },
-  {
-    id: 123,
+    id: 121,
     type: "VE",
     question:
       "Avec l'assistance de l'accompagnateur, contrôlez l'état, la propreté et le fonctionnement des feux de stop.",
@@ -908,21 +937,22 @@ export const questions = [
       "Vérification des feux, propres, en bon état et fonctionnent (toute anomalie doit être signalée).",
   },
   {
-    id: 124,
+    id: 122,
     type: "QSER",
     question: "Quelle est la conséquence en cas de panne des feux de stop ?",
     answer:
       "Un manque d'information pour les usagers suiveurs et un risque de collision.",
   },
   {
-    id: 125,
+    id: 123,
     type: "VI",
     question:
       "De quelle couleur est le voyant qui indique au conducteur que le feu de brouillard arrière est allumé ?",
-    answer: "",
+    answer: "Orange",
+    img: ["brouillard-arriere.png"],
   },
   {
-    id: 126,
+    id: 124,
     type: "QSER",
     question:
       "Quelle est la différence entre un voyant orange et un voyant rouge ?",
@@ -930,39 +960,43 @@ export const questions = [
       "- Rouge : Une anomalie de fonctionnement ou un danger. - Orange : un élément important.",
   },
   {
-    id: 127,
+    id: 125,
     type: "FirstAid",
     question: "Qu'est ce qu'un arrêt cardiaque ?",
     answer: "Le cœur ne fonctionne plus ou fonctionne d'une façon anarchique.",
   },
   {
-    id: 128,
+    id: 126,
     type: "VE",
-    question: "Ouvrez et refermez le capot, puis vérifiez sa bonne fermeture.",
-    answer: "",
+    question:
+      "Procédez à l'ouverture du capot puis à sa fermeture en vous assurant de son verrouillage.",
+    answer: "N'oublie pas de le dévérouiller avant de sortir de la voiture.",
   },
   {
-    id: 129,
+    id: 127,
     type: "QSER",
     question:
       "En roulant, quel est le risque d'une mauvaise fermeture du capot ?",
     answer: "Un risque d'ouverture du capot pouvant entraîner un accident.",
   },
   {
-    id: 130,
+    id: 128,
     type: "FirstAid",
     question:
       "Quel est le risque principal d'un arrêt cardiaque sans intervention des secours ?",
     answer: "La mort de la victime qui survient en quelques minutes.",
   },
   {
-    id: 131,
+    id: 129,
     type: "VI",
     question: "Montrez la commande de recyclage de l'air.",
     answer: "",
+    img: ["recyclage-air.jpg"],
+    imgCredit:
+      "https://www.presse-citron.net/le-mystere-du-bouton-recyclage-de-lair-dans-la-voiture-est-il-dangereux/",
   },
   {
-    id: 132,
+    id: 130,
     type: "QSER",
     question:
       "Quel peut être le risque de maintenir le recyclage de l'air de manière prolongée ?",
@@ -970,333 +1004,28 @@ export const questions = [
       "Un risque de mauvaise visibilité par l'apparition de buée sur les surfaces vitrées.",
   },
   {
-    id: 133,
-    type: "VE",
-    question: "Montrez l'orifice de remplissage du produit lave-glace.",
-    answer:
-      "Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
-  },
-  {
-    id: 134,
+    id: 131,
     type: "QSER",
     question:
       "Quel est le principal risque d'une absence de liquide lave-glace ?",
     answer: "Une mauvaise visibilité.",
   },
   {
-    id: 135,
-    type: "FirstAid",
-    question:
-      "Pourquoi faut-il pratiquer immédiatement une réanimation cardio-pulmonaire sur une victime en arrêt cardiaque ?",
-    answer: "Car les lésions du cerveau surviennent dès les premières minutes.",
-  },
-  {
-    id: 136,
+    id: 132,
     type: "VI",
     question: "Allumez les feux de route et montrez le voyant correspondant.",
     answer: "",
+    img: ["feux-route.png"],
   },
   {
-    id: 137,
+    id: 133,
     type: "QSER",
     question:
       "Quel est le risque de maintenir les feux de route lors d'un croisement avec d'autres usagers ?",
     answer: "Un risque d'éblouissement des autres usagers.",
   },
   {
-    id: 138,
-    type: "VE",
-    question:
-      "Vérifiez l'état, la propreté et le fonctionnement des feux diurnes.",
-    answer:
-      "Vérification des feux, propres, en bon état et qui fonctionnent (toute anomalie doit être signalée).",
-  },
-  {
-    id: 139,
-    type: "QSER",
-    question: "Quelle est leur utilité ?",
-    answer: "Rendre le véhicule plus visible le jour.",
-    context: "(Les feux diurnes)",
-  },
-  {
-    id: 140,
-    type: "VI",
-    question: "Vérifiez la présence du constat amiable dans le véhicule.",
-    answer: "",
-  },
-  {
-    id: 141,
-    type: "QSER",
-    question:
-      "En cas d'accident, dans quel délai doit-il être transmis à l'assureur ?",
-    answer: "5 jours.",
-  },
-  {
-    id: 142,
-    type: "VE",
-    question: "Vérifiez la présence du triangle de pré-signalisation.",
-    answer: "",
-  },
-  {
-    id: 143,
-    type: "QSER",
-    question: "Utilise-t-on le triangle de pré-signalisation sur autoroute ?",
-    answer: "Non.",
-  },
-  {
-    id: 144,
-    type: "VI",
-    question:
-      "De quelle couleur est le voyant qui indique une défaillance du système de freinage.",
-    answer: "",
-  },
-  {
-    id: 145,
-    type: "VE",
-    question:
-      "Montrez où s'effectue le changement d'une ampoule à l'avant du véhicule.",
-    answer:
-      "Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
-  },
-  {
-    id: 146,
-    type: "QSER",
-    question:
-      "Quelles sont les conséquences en cas de panne d'un feu de croisement ?",
-    answer:
-      "Une mauvaise visibilité et le risque d'être confondu avec un deux roues.",
-  },
-  {
-    id: 147,
-    type: "FirstAid",
-    question:
-      "Citez les trois manières d'évaluer l'état de conscience d'une victime ?",
-    answer:
-      '- Lui poser des questions simples ("comment ça va ?", "vous m\'entendez ?"). - Lui secouer doucement les épaules. - Lui prendre la main en lui demandant d\'exécuter un geste simple ("serrez-moi la main").',
-  },
-  {
-    id: 148,
-    type: "VI",
-    question:
-      "Si le véhicule en est équipé, montrez la commande du limiteur de vitesse.",
-    answer: "",
-  },
-  {
-    id: 149,
-    type: "QSER",
-    question: "Quelle est l'utilité d'un limiteur de vitesse ?",
-    answer: "Ne pas dépasser la vitesse programmée par le conducteur.",
-  },
-  {
-    id: 150,
-    type: "VE",
-    question:
-      "Montrez où s'effectue le changement d'une ampoule à l'arrière du véhicule.",
-    answer: "",
-  },
-  {
-    id: 151,
-    type: "QSER",
-    question:
-      "Quelles sont les conséquences en cas de panne d'un feu de position arrière ?",
-    answer: "Être mal vu et un risque de collision.",
-  },
-  {
-    id: 152,
-    type: "FirstAid",
-    question:
-      "Comment est diffusée l'alerte émise par le Signal d'Alerte et d'Information aux Populations (SAIP) ?",
-    answer:
-      "Grâce aux sirènes, aux médias tels que Radio France et France Télévision ou encore grâce à l'application SAIP.",
-  },
-  {
-    id: 153,
-    type: "VI",
-    question: "Faites fonctionner l'essuie-glace arrière du véhicule.",
-    answer: "",
-  },
-  {
-    id: 154,
-    type: "QSER",
-    question:
-      "Pour une bonne visibilité vers l'arrière, en plus de l'utilisation de l'essuie-glace, quelle commande pouvez-vous actionner par temps de pluie ?",
-    answer:
-      "La commande de désemblage arrière. Le terme dégivrage peut remplacer celui de désemblage.",
-  },
-  {
-    id: 155,
-    type: "VE",
-    question: "Ouvrez et refermez le coffre, puis vérifiez sa bonne fermeture.",
-    answer: "",
-  },
-  {
-    id: 156,
-    type: "QSER",
-    question:
-      "Lorsque vous transportez un poids important dans le coffre, quelles sont les précautions à prendre en ce qui concerne les pneumatiques et l'éclairage avant ?",
-    answer:
-      "Augmenter la pression des pneumatiques et régler la hauteur des feux avants.",
-  },
-  {
-    id: 157,
-    type: "FirstAid",
-    question:
-      "L'utilisation d'un Défibrillateur Automatisé (DAE) sur une victime qui n'est pas en arrêt cardiaque présente-t-elle un risque ?",
-    answer:
-      "Non car le défibrillateur se déclenche uniquement quand la victime est en arrêt cardiaque.",
-  },
-  {
-    id: 158,
-    type: "VI",
-    question:
-      "Indiquez où se situe les attaches de type Isofix dans le véhicule.",
-    answer:
-      "Pour info : les attaches de type Isofix sont obligatoires sur les véhicules neufs depuis 2011.",
-  },
-  {
-    id: 159,
-    type: "QSER",
-    question:
-      "Peut-on fixer tous les sièges enfant sur des attaches de type Isofix ?",
-    answer: "Non (uniquement ceux compatibles avec ce type d'attache).",
-  },
-  {
-    id: 160,
-    type: "QSER",
-    question:
-      "Quels sont les risques de circuler avec des objets sur la plage arrière ?",
-    answer:
-      "Une mauvaise visibilité vers l'arrière et un risque de projection en cas de freinage brusque ou de choc.",
-  },
-  {
-    id: 161,
-    type: "VI",
-    question:
-      "Montrez sur le tableau de bord le voyant indiquant une baisse de pression d'air d'un pneumatique.",
-    answer:
-      "Pour info: obligatoire sur tous les véhicules neufs mis en circulation à compter du 01/11/2014.",
-  },
-  {
-    id: 162,
-    type: "QSER",
-    question:
-      "A quelle fréquence est-il préconisé de vérifier la pression d'air des pneumatiques ?",
-    answer: "Tous les mois.",
-  },
-  {
-    id: 163,
-    type: "VI",
-    question:
-      "Procédez à l'ouverture du capot puis à sa fermeture en vous assurant de son verrouillage.",
-    answer: "",
-  },
-  {
-    id: 164,
-    type: "QSER",
-    question:
-      "Pour un capot s'ouvrant depuis l'avant du véhicule, quelle est l'utilité du dispositif de sécurité ?",
-    answer:
-      "Empêcher l'ouverture du capot en circulation en cas de mauvais verrouillage.",
-  },
-  {
-    id: 165,
-    type: "VI",
-    question: "Montrez la commande de réglage de hauteur des feux.",
-    answer: "Dispositif situé en général à gauche du volant.",
-  },
-  {
-    id: 166,
-    type: "FirstAid",
-    question:
-      "Comment et pourquoi protéger une zone de danger en cas d'accident de la route ?",
-    answer:
-      "En délimitant clairement et largement la zone de danger de façon visible pour protéger les victimes et éviter un sur-accident",
-  },
-  {
-    id: 167,
-    type: "VE",
-    question: "Montrez où se situent les gicleurs de lave-glace avant.",
-    answer: "",
-  },
-  {
-    id: 168,
-    type: "QSER",
-    question:
-      "Quelle est la principale conséquence d'un dispositif de lave-glace défaillant ?",
-    answer:
-      "Une mauvaise visibilité due à l'impossibilité de nettoyer le pare-brise.",
-  },
-  {
-    id: 169,
-    type: "FirstAid",
-    question:
-      "Comment est composé le signal d'alerte du Système d'Alerte et d'Information des Populations (SAIP) diffusé par les sirènes ?",
-    answer:
-      "Il se compose de deux codes distincts : - le Signal National d'Alerte (SNA), variation du signal sur trois cycles successifs. - Le signal de fin d'alerte, signal continu.",
-  },
-  {
-    id: 170,
-    type: "VI",
-    question: "Vérifiez la présence du gilet de haute visibilité.",
-    answer:
-      'Le candidat doit montrer où il se trouve sans obligation de le sortir. Le terme "gilet jaune" peut être utilisé si le candidat ne comprend pas.',
-  },
-  {
-    id: 171,
-    type: "VE",
-    question:
-      "Contrôlez l'état, la propreté et le fonctionnement de tous les clignotants côté trottoir.",
-    answer:
-      "Vérification des clignotants, propres, en bon état et fonctionnent (toute anomalie doit être signalée).",
-  },
-  {
-    id: 172,
-    type: "QSER",
-    question:
-      "Quelles sont les conditions à respecter pour compléter le niveau d'huile ?",
-    answer: "Moteur froid et sur un terrain plat.",
-  },
-  {
-    id: 173,
-    type: "QSER",
-    question: "Citez un cas d'utilisation d'un appel lumineux.",
-    answer:
-      "- Pour avertir de son approche. - En cas de danger. - A la place de l'avertisseur sonore.",
-  },
-  {
-    id: 174,
-    type: "QSER",
-    question:
-      "Citez deux éléments complémentaires permettant un désembuage efficace ?",
-    answer:
-      "La commande de vitesse de ventilation. - La commande d'air chaud. - La climatisation.",
-  },
-  {
-    id: 175,
-    type: "FirstAid",
-    question:
-      "Comment est diffusée l'alerte émise par Le Signal d'Alerte et d'Information aux Populations (SAIP) ?",
-    answer:
-      "Grâce aux sirènes, aux médias tels que Radio France et France Télévision ou encore grâce à l'application SAIP.",
-  },
-  {
-    id: 176,
-    type: "FirstAid",
-    question:
-      "Quels comportements adopter en cas de diffusion du signal d'alerte du Système d'alerte et d'Information des Populations (SAIP) ?",
-    answer:
-      "- Se mettre en sécurité. - S'informer grâce aux médias et sites internet des autorités dès que leur consultation est possible. - Respecter les consignes des autorités.",
-  },
-  {
-    id: 177,
-    type: "QSER",
-    question:
-      "A quelle fréquence est-il préconisé de vérifier la pression des pneus ?",
-    answer:
-      "Chaque mois pour une utilisation normale de son véhicule et avant chaque long trajet.",
-  },
-  {
-    id: 178,
+    id: 134,
     type: "VE",
     question:
       "Vérifiez l'état, la propreté et le fonctionnement des feux diurnes.",
@@ -1304,7 +1033,90 @@ export const questions = [
       "Vérification des feux, propres, en bon état et fonctionnent (toute anomalie doit être signalée).",
   },
   {
-    id: 179,
+    id: 135,
+    type: "QSER",
+    question: "Quelle est leur utilité ?",
+    answer: "Rendre le véhicule plus visible le jour.",
+    context: "(Les feux diurnes)",
+  },
+  {
+    id: 136,
+    type: "VI",
+    question: "Vérifiez la présence du constat amiable dans le véhicule.",
+    answer:
+      "Aide: Il se peut qu'il ne soit pas présent, il n'est pas obligatoire légalement, juste fortement conseillé",
+  },
+  {
+    id: 137,
+    type: "QSER",
+    question:
+      "En cas d'accident, dans quel délai doit-il être transmis à l'assureur ?",
+    answer: "5 jours.",
+  },
+  {
+    id: 138,
+    type: "VE",
+    question: "Vérifiez la présence du triangle de pré-signalisation.",
+    answer: "Aide: souvent dans le coffre, vérifie avant l'examen",
+  },
+  {
+    id: 139,
+    type: "QSER",
+    question: "Utilise-t-on le triangle de pré-signalisation sur autoroute ?",
+    answer: "Non.",
+  },
+  {
+    id: 140,
+    type: "VE",
+    question:
+      "Montrez où s'effectue le changement d'une ampoule à l'avant du véhicule.",
+    answer:
+      "Si le candidat a des difficultés pour ouvrir le capot, l'accompagnateur peut lui indiquer comment procéder.",
+  },
+  {
+    id: 141,
+    type: "QSER",
+    question:
+      "Quelles sont les conséquences en cas de panne d'un feu de croisement ?",
+    answer:
+      "Une mauvaise visibilité et le risque d'être confondu avec un deux roues.",
+  },
+  {
+    id: 142,
+    type: "VI",
+    question:
+      "Si le véhicule en est équipé, montrez la commande du limiteur de vitesse.",
+    answer: "",
+    img: ["limiter.png"],
+  },
+  {
+    id: 143,
+    type: "QSER",
+    question: "Quelle est l'utilité d'un limiteur de vitesse ?",
+    answer: "Ne pas dépasser la vitesse programmée par le conducteur.",
+  },
+  {
+    id: 144,
+    type: "VE",
+    question:
+      "Montrez où s'effectue le changement d'une ampoule à l'arrière du véhicule.",
+    answer: "Aide: il faudra ouvrir le coffre",
+  },
+  {
+    id: 145,
+    type: "QSER",
+    question:
+      "Quelles sont les conséquences en cas de panne d'un feu de position arrière ?",
+    answer: "Être mal vu et un risque de collision.",
+  },
+  {
+    id: 146,
+    type: "VI",
+    question: "Faites fonctionner l'essuie-glace arrière du véhicule.",
+    answer: "vrrr vrrrr vrrr vrrrr",
+  },
+  {
+    id: 147,
     type: "QSER",
     question:
       "Pour une bonne visibilité vers l'arrière, en plus de l'utilisation de l'essuie-glace, quelle commande pouvez-vous actionner par temps de pluie ?",
@@ -1312,17 +1124,76 @@ export const questions = [
       "La commande de désembuage arrière. Le terme dégivrage peut remplacer celui de désembuage.",
   },
   {
-    id: 180,
+    id: 148,
+    type: "VE",
+    question: "Ouvrez et refermez le coffre, puis vérifiez sa bonne fermeture.",
+    answer: "Clap :D",
+  },
+  {
+    id: 149,
+    type: "QSER",
+    question:
+      "Lorsque vous transportez un poids important dans le coffre, quelles sont les précautions à prendre en ce qui concerne les pneumatiques et l'éclairage avant ?",
+    answer:
+      "Augmenter la pression des pneumatiques et régler la hauteur des feux avants.",
+  },
+  {
+    id: 150,
+    type: "VI",
+    question:
+      "Indiquez où se situe les attaches de type Isofix dans le véhicule.",
+    answer:
+      "Pour info : les attaches de type Isofix sont obligatoires sur les véhicules neufs depuis 2011.",
+    img: ["isofix.jpg"],
+    imgCredit: "https://fr.wikipedia.org/wiki/Isofix",
+  },
+  {
+    id: 151,
+    type: "QSER",
+    question:
+      "Peut-on fixer tous les sièges enfant sur des attaches de type Isofix ?",
+    answer: "Non (uniquement ceux compatibles avec ce type d'attache).",
+  },
+  {
+    id: 152,
+    type: "QSER",
+    question:
+      "Quels sont les risques de circuler avec des objets sur la plage arrière ?",
+    answer:
+      "Une mauvaise visibilité vers l'arrière et un risque de projection en cas de freinage brusque ou de choc.",
+  },
+  {
+    id: 153,
     type: "VI",
     question:
       "Montrez le voyant indiquant une baisse de pression d'air d'un pneumatique ?",
     answer:
-      "Pour info : obligatoire sur tous les véhicules neufs mis en circulation à compter du 01/11/2014.",
+      "Pour info: obligatoire sur tous les véhicules neufs mis en circulation à compter du 01/11/2014.",
+    img: ["pression-pneus.jpg"],
+    imgCredit:
+      "https://www.actronics.fr/actualite/general/tous-les-voyants-du-tableau-de-bord",
   },
   {
-    id: 181,
+    id: 154,
+    type: "QSER",
+    question:
+      "Pour un capot s'ouvrant depuis l'avant du véhicule, quelle est l'utilité du dispositif de sécurité ?",
+    answer:
+      "Empêcher l'ouverture du capot en circulation en cas de mauvais verrouillage.",
+  },
+  {
+    id: 155,
     type: "VE",
-    question: "Montrez où se situent les gicleurs de lave-glace avant ?",
+    question: "Montrez où se situent les gicleurs de lave-glace avant.",
     answer: "",
+    img: ["gicleurs.jpg"],
+  },
+  {
+    id: 156,
+    type: "QSER",
+    question:
+      "Quelle est la principale conséquence d'un dispositif de lave-glace défaillant ?",
+    answer:
+      "Une mauvaise visibilité due à l'impossibilité de nettoyer le pare-brise.",
   },
 ];
