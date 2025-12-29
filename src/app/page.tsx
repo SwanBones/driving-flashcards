@@ -19,6 +19,12 @@ import { compressBooleans, decompressBooleans } from "./utils/encoding";
 import InfoModal from "./components/InfoModal";
 import LegalInfo from "./components/LegalInfo";
 import ShareModal from "./components/ShareModal";
+const easterEggs = {
+  miku: "omg its miku",
+  migu: "omg its migu",
+  swanbones: "wow c'est un beau code de sauvegarde ça",
+  rickastley: "never give up",
+};
 
 export default function Home() {
   const { questions, questionGroups, checkQuestions, checkedQuestions } =
@@ -46,6 +52,11 @@ export default function Home() {
     checkedQuestions.forEach((id) => (arrFalse[id - 1] = true));
     return compressBooleans(arrFalse);
   }, [checkedQuestions]);
+
+  const easterEgg =
+    saveDataParam && saveDataParam in easterEggs
+      ? easterEggs[saveDataParam as keyof typeof easterEggs]
+      : undefined;
 
   useEffect(() => {
     const localStorageSaveData = localStorage.getItem("saveData");
@@ -168,8 +179,8 @@ export default function Home() {
         <div className="max-w-6xl flex flex-col items-center gap-8 ">
           <h1 className="text-center">Groupes de questions</h1>
           <p className="text-xs text-zinc-400 italic -mt-7 text-center">
-            Les questions se répètent beaucoup. Descends pour les questions
-            individuelles!
+            {easterEgg ??
+              "Les questions se répètent beaucoup. Descends pour les questions individuelles!"}
           </p>
           <div className="bg-zinc-100 rounded-xl p-2 sm:p-10">
             <QuestionGrid
