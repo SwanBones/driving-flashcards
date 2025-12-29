@@ -16,7 +16,7 @@ function LegalInfo() {
           </a>
         </span>
         . Quelques réponses ont été modifiés pour améliorer la clarté et la
-        compréhension.
+        redondance.
       </p>
     </div>
   );
