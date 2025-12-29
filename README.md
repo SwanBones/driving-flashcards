@@ -23,7 +23,7 @@ et
 
 > Montrez où s'effectue le remplissage du produit lave-glace.
 
-a été unifié pour avoir seulement
+a été unifié et la 2eme phrase apparaît dans les deux cas.
 
 > Montrez où s'effectue le remplissage du produit lave-glace.
 

@@ -694,6 +694,7 @@ export const questions = [
     question:
       "Sur le flanc d'un pneumatique, désignez le repère du témoin d'usure de la bande de roulement.",
     answer: ["temoin.jpg"],
+    imgCredit: "https://www.permisapoints.fr/actualites/zoom-sur-les-pneus",
   },
   {
     id: 90,
