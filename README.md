@@ -1,4 +1,4 @@
-### Salut!
+## Salut!
 
 J'ai créé cet outil pour aider ceux qui veulent réviser leurs quesitons de vérification pour leur permis.
 Aucune donnée n'est sauvegardée, tout est dans le lien!
@@ -7,19 +7,20 @@ Allez le voir, et servez-vous! [C'est ici.](http://verif-quiz.web.app/)
 les questions proviennent de cette banque:
 [https://www.automotoecole-junien.fr/wp-content/uploads/2024/03/banque-verifications-23_01_2023.pdf](https://www.automotoecole-junien.fr/wp-content/uploads/2024/03/banque-verifications-23_01_2023.pdf)
 
-Quelques réponses ont été modifiés pour améliorer la clarté et la compréhension.
+Vous pouvez me contacter via email si vous pensez que j'utilise votre image d'une façon injuste. Je la remplacerai avec plaisir, sans délai.
 
-## TODO:
+Un souci? Un bug? Une question qui n'est pas cochée alors qu'elle devrait l'être? Contacte-moi par mail!
 
-### Priority 1:
+## Notes importantes:
 
-- questions with actual explainations and pictures
+Quelques réponses et questions ont été modifiées pour améliorer la clarté.
 
-### Priority 2:
+Exemple:
 
-- better question grouping? distinguish SAIP security / Verifs interne and externe?
+> Montrez l'orifice de remplissage du produit lave-glace.
 
-### Priority 3
+a été remplacé par
 
-- iframe embed
-  - let people disable my donate button with a queryparam
+> Montrez où s'effectue le remplissage du produit lave-glace.
+
+qui d'ailleurs existait déjà dans la banque de données. En présumant que l'élève comprendra la première phrase et adaptera la bonne réponse, tout devrait bien se passer. :)

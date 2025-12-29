@@ -10,6 +10,7 @@ import {
   CloseOutlined,
   InfoCircleTwoTone,
   SettingOutlined,
+  ShareAltOutlined,
 } from "@ant-design/icons";
 import { Button, message } from "antd";
 import SettingsModal from "./components/SettingsModal";
@@ -17,6 +18,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { compressBooleans, decompressBooleans } from "./utils/encoding";
 import InfoModal from "./components/InfoModal";
 import LegalInfo from "./components/LegalInfo";
+import ShareModal from "./components/ShareModal";
 
 export default function Home() {
   const { questions, questionGroups, checkQuestions, checkedQuestions } =
@@ -28,13 +30,15 @@ export default function Home() {
   const [isSettingsModalOpen, setIsSettingsModalOpen] =
     useState<boolean>(false);
   const [isInfoModalOpen, setIsInfoModalOpen] = useState<boolean>(false);
+  const [isShareModalOpen, setIsShareModalOpen] = useState<boolean>(false);
   const [isInfoCardOpen, setIsInfoCardOpen] = useState<boolean>(true);
   const [messageApi, contextHolder] = message.useMessage();
   const searchParams = useSearchParams();
 
-  const progress = searchParams.get("progress");
+  const saveDataParam = searchParams.get("saveData");
 
-  const codedProgress = useMemo(() => {
+  const saveCode = useMemo(() => {
+    if (!checkQuestions && !saveDataParam) return;
     const numberOfQuestions = questions.length;
     let arrFalse: boolean[] = Array(numberOfQuestions).fill(false);
     checkedQuestions.forEach((id) => (arrFalse[id - 1] = true));
@@ -42,21 +46,29 @@ export default function Home() {
   }, [checkedQuestions]);
 
   useEffect(() => {
-    if (progress) {
-      const booleans = decompressBooleans(progress, questions.length);
+    const localStorageSaveData = localStorage.getItem("saveData");
+    let booleans;
+    if (saveDataParam) {
+      booleans = decompressBooleans(saveDataParam, questions.length);
+    } else if (localStorageSaveData) {
+      booleans = decompressBooleans(localStorageSaveData, questions.length);
+      updateQuery(localStorageSaveData);
+    }
 
-      const validatedQuestions: number[] = booleans
-        .map((value, index) => {
+    const validatedQuestions: number[] =
+      booleans
+        ?.map((value, index) => {
           return value ? index + 1 : undefined;
         })
-        .filter((val) => val !== undefined);
-      checkQuestions(validatedQuestions);
-    }
+        .filter((val) => val !== undefined) ?? [];
+    checkQuestions(validatedQuestions);
   }, []);
 
   useEffect(() => {
-    updateQuery(codedProgress);
-  }, [codedProgress]);
+    if (saveCode) {
+      updateQuery(saveCode);
+    }
+  }, [saveCode]);
 
   const handleQuestionGroupClick = (qG: QuestionGroup) => {
     setIsQuestionModalOpen(true);
@@ -64,6 +76,9 @@ export default function Home() {
   };
   const handleSettingsClick = () => {
     setIsSettingsModalOpen(true);
+  };
+  const handleShareClick = () => {
+    setIsShareModalOpen(true);
   };
   const handleInfoClick = () => {
     setIsInfoModalOpen(true);
@@ -92,12 +107,11 @@ export default function Home() {
 
   const updateQuery = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
-    params.set("progress", value);
-    const scrollY = window.scrollY; // save current scroll
+    params.set("saveData", value);
+    localStorage.setItem("saveData", value);
     router.replace(`${window.location.pathname}?${params.toString()}`, {
       scroll: false,
     });
-    window.scrollTo(0, scrollY); // restore scroll
   };
 
   return (
@@ -105,7 +119,7 @@ export default function Home() {
       {isInfoCardOpen && (
         <div className="fixed bottom-0 right-0 m-4 bg-white rounded-xl p-4  z-10 max-w-100 shadow-lg ">
           <div className="flex flex-row justify-between items-center gap-2 ">
-            <h2>Ce site n'utilise PAS de cookies</h2>
+            <h2>Ton progrès est sauvegardé !</h2>
             <Button
               onClick={() => setIsInfoCardOpen(false)}
               type="text"
@@ -115,12 +129,16 @@ export default function Home() {
           </div>
 
           <p>
-            Eh wi! :D Ta progression est enregistrée dans l'URL, pense à
-            enregistrer le nouvel URl à la fin de ta séance (Dans les paramètres{" "}
-            <span className="underline">en haut à droite de la page</span>
-            ). C'est à dire que tes données ne sont pas stockées dans une base
-            de données obscure. Bonnes révisions! :)
+            Ta progression est enregistrée dans l'URL, tu peux la garder pour
+            transférer ton progrès sur un autre appareil.{" "}
+            <span className="font-bold">
+              Tu peux aussi tout réinitialiser dans les paramètres{" "}
+              <SettingOutlined />.{" "}
+            </span>
+            Ça veut aussi dire que tes données ne sont pas stockées dans une
+            base de données obscure, tout reste sur ton appareil.
           </p>
+          <p className="mt-2">Bonnes révisions! :)</p>
         </div>
       )}
 
@@ -129,14 +147,20 @@ export default function Home() {
           icon={<SettingOutlined />}
           variant="text"
           onClick={handleSettingsClick}
-          className="self-end md:h-4 h-8 md:!p-2 !p-5"
+          className="self-end h-8 !p-5"
         />
 
         <Button
           icon={<InfoCircleTwoTone twoToneColor={"#7627f5ff"} />}
           variant="text"
           onClick={handleInfoClick}
-          className="self-end md:h-4 h-8 md:!p-2 !p-5"
+          className="self-end h-8 !p-5"
+        />
+        <Button
+          icon={<ShareAltOutlined />}
+          variant="text"
+          onClick={handleShareClick}
+          className="self-end h-8 !p-5"
         />
       </div>
       <div className="max-w-6xl flex flex-col items-center gap-8 ">
@@ -161,9 +185,9 @@ export default function Home() {
         <LegalInfo />
       </div>
       <SettingsModal
-        progressCode={codedProgress}
+        saveCode={saveCode}
         isOpen={isSettingsModalOpen}
-        onCancel={handleSettingsClose}
+        onClose={handleSettingsClose}
       />
       <QuestionModal
         questionGroup={modalQuestionGroup}
@@ -174,6 +198,10 @@ export default function Home() {
       <InfoModal
         isOpen={isInfoModalOpen}
         onClose={() => setIsInfoModalOpen(false)}
+      />
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
       />
       {contextHolder}
     </div>
