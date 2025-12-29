@@ -19,6 +19,13 @@ import { compressBooleans, decompressBooleans } from "./utils/encoding";
 import InfoModal from "./components/InfoModal";
 import LegalInfo from "./components/LegalInfo";
 import ShareModal from "./components/ShareModal";
+import CornerInfoCard from "./components/CornerInfoCard";
+const easterEggs = {
+  miku: "omg its miku",
+  migu: "omg its migu",
+  swanbones: "wow c'est un beau code de sauvegarde ça",
+  rickastley: "never give up",
+};
 
 export default function Home() {
   const { questions, questionGroups, checkQuestions, checkedQuestions } =
@@ -34,8 +41,10 @@ export default function Home() {
   const [isInfoCardOpen, setIsInfoCardOpen] = useState<boolean>(true);
   const [messageApi, contextHolder] = message.useMessage();
   const searchParams = useSearchParams();
-
   const saveDataParam = searchParams.get("saveData");
+
+  const hideGrid = searchParams.get("hideGrid") === "true";
+  const hideList = searchParams.get("hideList") === "true";
 
   const saveCode = useMemo(() => {
     if (!checkQuestions && !saveDataParam) return;
@@ -44,6 +53,11 @@ export default function Home() {
     checkedQuestions.forEach((id) => (arrFalse[id - 1] = true));
     return compressBooleans(arrFalse);
   }, [checkedQuestions]);
+
+  const easterEgg =
+    saveDataParam && saveDataParam in easterEggs
+      ? easterEggs[saveDataParam as keyof typeof easterEggs]
+      : undefined;
 
   useEffect(() => {
     const localStorageSaveData = localStorage.getItem("saveData");
@@ -116,31 +130,10 @@ export default function Home() {
 
   return (
     <div className="flex min-h-screen flex-col flex-inline gap-4 md:px-20 py-14 md:py-10 items-center justify-center bg-zinc-50 font-sans">
-      {isInfoCardOpen && (
-        <div className="fixed bottom-0 right-0 m-4 bg-white rounded-xl p-4  z-10 max-w-100 shadow-lg ">
-          <div className="flex flex-row justify-between items-center gap-2 ">
-            <h2>Ton progrès est sauvegardé !</h2>
-            <Button
-              onClick={() => setIsInfoCardOpen(false)}
-              type="text"
-              icon={<CloseOutlined />}
-              className="self-end "
-            />
-          </div>
-
-          <p>
-            Ta progression est enregistrée dans l'URL, tu peux la garder pour
-            transférer ton progrès sur un autre appareil.{" "}
-            <span className="font-bold">
-              Tu peux aussi tout réinitialiser dans les paramètres{" "}
-              <SettingOutlined />.{" "}
-            </span>
-            Ça veut aussi dire que tes données ne sont pas stockées dans une
-            base de données obscure, tout reste sur ton appareil.
-          </p>
-          <p className="mt-2">Bonnes révisions! :)</p>
-        </div>
-      )}
+      <CornerInfoCard
+        onClose={() => setIsInfoCardOpen(false)}
+        isOpen={isInfoCardOpen}
+      />
 
       <div className="flex flex-row self-end z-10 gap-2 top-2 md:top-10 right-2 md:right-20 fixed">
         <Button
@@ -149,41 +142,53 @@ export default function Home() {
           onClick={handleSettingsClick}
           className="self-end h-8 !p-5"
         />
-
-        <Button
-          icon={<InfoCircleTwoTone twoToneColor={"#7627f5ff"} />}
-          variant="text"
-          onClick={handleInfoClick}
-          className="self-end h-8 !p-5"
-        />
         <Button
           icon={<ShareAltOutlined />}
           variant="text"
           onClick={handleShareClick}
           className="self-end h-8 !p-5"
         />
+        <Button
+          icon={<InfoCircleTwoTone twoToneColor={"#7627f5ff"} />}
+          variant="text"
+          onClick={handleInfoClick}
+          className="self-end h-8 !p-5"
+        />
       </div>
-      <div className="max-w-6xl flex flex-col items-center gap-8 ">
-        <h1 className="text-center">Groupes de questions</h1>
-        <p className="text-xs text-zinc-400 italic -mt-7 text-center">
-          Les questions se répètent beaucoup. Descends pour les questions
-          individuelles!
-        </p>
-        <div className="bg-zinc-100 rounded-xl p-2 sm:p-10">
-          <QuestionGrid
-            questionGroups={questionGroups}
-            onItemClick={handleQuestionGroupClick}
-          />
+      {!hideGrid && (
+        <div className="max-w-6xl flex flex-col items-center gap-8 ">
+          <h1 className="text-center">Groupes de questions</h1>
+          <p className="text-xs text-zinc-400 italic -mt-7 text-center">
+            {easterEgg ??
+              "Les questions se répètent beaucoup. Descends pour les questions individuelles!"}
+          </p>
+          <div className="bg-zinc-100 rounded-xl p-2 sm:p-10">
+            <QuestionGrid
+              questionGroups={questionGroups}
+              onItemClick={handleQuestionGroupClick}
+            />
+          </div>
         </div>
+      )}
+      {!hideList && (
+        <div className="max-w-6xl flex flex-col items-center gap-8 ">
+          <h1 className="mt-4 text-center">Questions uniques</h1>
+          <p className="text-xs text-zinc-400 italic -mt-7 text-center">
+            Toutes les questions, regroupées
+          </p>
 
-        <h1 className="mt-4 text-center">Questions uniques</h1>
-        <p className="text-xs text-zinc-400 italic -mt-7 text-center">
-          Toutes les questions, regroupées
-        </p>
-
-        <QuestionList />
-        <LegalInfo />
-      </div>
+          <QuestionList />
+          <LegalInfo />
+        </div>
+      )}
+      {hideGrid && hideList && (
+        <div className="max-w-6xl flex flex-col items-center gap-4 ">
+          <p>Bon bah du coup il y a plus rien à afficher, bravo :))</p>
+          <p className="text-xs text-zinc-600 italic">
+            (pense à changer l'URL pour qu'elle affiche au moins une interface )
+          </p>
+        </div>
+      )}
       <SettingsModal
         saveCode={saveCode}
         isOpen={isSettingsModalOpen}

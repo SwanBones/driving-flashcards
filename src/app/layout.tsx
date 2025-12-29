@@ -17,6 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <meta name="author" content="swanbones" />
+        <meta
+          name="description"
+          content="Ce site permet de facilement réviser ses questions de vérifications! Gratuit et sécurisé car il fonctionne sans backend."
+        />
         <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
       <Suspense>

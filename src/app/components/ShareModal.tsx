@@ -23,21 +23,19 @@ function ShareModal(props: Props) {
   };
 
   return (
-    <Modal onCancel={onClose} open={isOpen} footer centered title="Paramètres">
-      <div className="flex gap-4 flex-col">
+    <Modal onCancel={onClose} open={isOpen} footer centered title="Partager">
+      <div className="flex gap-4 flex-col items-center">
         <Button className="w-fit" color="default" onClick={handleShareLink}>
-          Partager <ShareAltOutlined />
+          Partage cette application! <ShareAltOutlined />
         </Button>
-        <p>Embedder ce site: </p>
-        <div className="text-center">
-          <p className="bg-zinc-100 rounded-md p-4 text-left">
-            {`<iframe
-            src="https://verif-quiz.web.app/"
+        <h2 className="mt-2">Embedder ce site: </h2>
+        <p className="bg-zinc-100 rounded-md p-4 text-left">
+          {`<iframe
+            src="https://verif-quiz.web.app/?hideList=false&hideGrid=false"
             width="700"
             height="500"
           ></iframe>`}
-          </p>
-        </div>
+        </p>
       </div>
     </Modal>
   );

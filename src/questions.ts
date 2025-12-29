@@ -16,6 +16,7 @@ export const questions = [
     type: "VI",
     question: "Montrez la commande de réglage de hauteur des feux.",
     answer: "Dispositif situé en général à gauche du volant.",
+    img: ["hauteur-feux.png"],
     imgCredit:
       "https://www.actronics.fr/actualite/general/tous-les-voyants-du-tableau-de-bord",
   },
