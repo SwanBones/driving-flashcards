@@ -693,7 +693,8 @@ export const questions = [
     type: "VE",
     question:
       "Sur le flanc d'un pneumatique, désignez le repère du témoin d'usure de la bande de roulement.",
-    answer: "", //picture needed
+    answer: ["temoin.jpg"],
+    imgCredit: "https://www.permisapoints.fr/actualites/zoom-sur-les-pneus",
   },
   {
     id: 90,
@@ -723,7 +724,9 @@ export const questions = [
     type: "VE",
     question:
       "Ouvrez la trappe à carburant et/ou vérifiez la bonne fermeture du bouchon.",
-    answer: "", //picture needed
+    answer: "",
+    img: ["trappe.jpg"],
+    imgCredit: "https://fr.wikipedia.org/wiki/Trappe_%C3%A0_carburant",
   },
   {
     id: 94,
