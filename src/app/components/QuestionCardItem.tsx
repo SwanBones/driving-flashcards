@@ -1,7 +1,10 @@
 import { Question, QuestionType } from "@/questions";
-import { Card, Tag } from "antd";
+import { Card, Spin, Tag } from "antd";
 import UncheckableBox from "./UncheckableBox";
 import { useQuestions } from "../stores/questionStore";
+import { LoadingOutlined } from "@ant-design/icons";
+import { useState } from "react";
+import LoadingImg from "./LoadingImg";
 type Props = {
 	question: Question;
 	handleQuestionClick: (q: Question) => void;
@@ -10,7 +13,7 @@ type Props = {
 function QuestionCardItem(props: Props) {
 	const { question, showAnswers, handleQuestionClick } = props;
 	const { uncheckQuestions } = useQuestions();
-
+	const [isPictureLoading, setIsPictureLoading] = useState<boolean>(true);
 	const tag: any = {
 		QSER: {
 			color: "lime",
@@ -60,11 +63,12 @@ function QuestionCardItem(props: Props) {
 						<p>{question.answer}</p>
 						<div className="flex-col flex items-center justify-center">
 							{question.img?.[0] && (
-								<img
-									src={`/answer_img/${question.img?.[0]}`}
-									alt="Image d'aide"
-									className="max-h-30 rounded-xl mt-4"
-								/>
+								<div className=" flex items-center justify-center">
+									<LoadingImg
+										src={`/answer_img/${question.img?.[0]}`}
+										alt={"Image d'aide"}
+									/>
+								</div>
 							)}
 							{question.imgCredit && (
 								<a
@@ -76,10 +80,10 @@ function QuestionCardItem(props: Props) {
 								</a>
 							)}
 							{question.img?.[1] && (
-								<img
+								<LoadingImg
 									src={`/answer_img/${question.img?.[1]}`}
-									alt="Image de Rappel"
-									className="max-h-30 pt-6 border-t mt-4 border-zinc-300"
+									alt={"Image de Rappel"}
+									classNames="pt-4 "
 								/>
 							)}
 						</div>
