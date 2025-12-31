@@ -14,15 +14,21 @@ function ShareModal(props: Props) {
 	const pathname = usePathname();
 	const link = `https://verif-quiz.web.app/`;
 
-	const handleShareLink = () => {
+	const handleShareLink = async () => {
 		// try {
-		// 	navigator.share({ url: link });
+		//
 		// 	console.log(navigator.canShare({ url: link }));
 		// } catch (e) {
 		navigator.clipboard
 			.writeText(link)
 			.then(() => message.success("Copié dans le presse-papiers !"))
 			.catch(() => message.error("Erreur lors de la copie"));
+
+		try {
+			await navigator.share({ url: link });
+		} catch (e) {
+			console.log("cannot share");
+		}
 		// }
 	};
 	const handleCopy = () => {
