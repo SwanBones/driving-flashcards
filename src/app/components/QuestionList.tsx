@@ -5,6 +5,7 @@ import { Collapse, Radio } from "antd";
 import { RightOutlined } from "@ant-design/icons";
 import UncheckableBox from "./UncheckableBox";
 import { CheckboxGroupProps, CheckboxOptionType } from "antd/es/checkbox";
+import LoadingImg from "./LoadingImg";
 
 type QuestionListItem = {
 	question: Question;
@@ -67,10 +68,10 @@ function QuestionList() {
 							<div className="flex flex-col items-center">
 								<p className="text-left">{question.answer}</p>
 								{question.img && (
-									<img
+									<LoadingImg
 										src={`/answer_img/${question.img?.[0]}`}
 										alt="Image d'aide"
-										className="max-h-30 rounded-xl mt-4 w-fit"
+										classNames="w-fit"
 									/>
 								)}
 								{question.imgCredit && (
@@ -83,10 +84,10 @@ function QuestionList() {
 									</a>
 								)}
 								{question.img?.[1] && (
-									<img
+									<LoadingImg
 										src={`/answer_img/${question.img?.[1]}`}
-										alt="Image de Rappel"
-										className="max-h-30 pt-6 border-t mt-4 border-zinc-300"
+										alt="Image d'aide"
+										classNames="pt-6 w-fit "
 									/>
 								)}
 							</div>
@@ -115,10 +116,10 @@ function QuestionList() {
 							<div className="flex flex-col items-center">
 								<p className="text-left">{question.answer}</p>
 								{question.img && (
-									<img
+									<LoadingImg
 										src={`/answer_img/${question.img?.[0]}`}
 										alt="Image d'aide"
-										className="max-h-30 rounded-xl mt-4 w-fit"
+										classNames="w-fit"
 									/>
 								)}
 								{question.imgCredit && (
@@ -131,10 +132,10 @@ function QuestionList() {
 									</a>
 								)}
 								{question.img?.[1] && (
-									<img
+									<LoadingImg
 										src={`/answer_img/${question.img?.[1]}`}
-										alt="Image de Rappel"
-										className="max-h-30 pt-6 border-t mt-4 border-zinc-300"
+										alt="Image d'aide"
+										classNames="pt-6 w-fit "
 									/>
 								)}
 							</div>
@@ -162,10 +163,10 @@ function QuestionList() {
 							<div className="flex flex-col items-center">
 								<p className="text-left">{question.answer}</p>
 								{question.img && (
-									<img
+									<LoadingImg
 										src={`/answer_img/${question.img?.[0]}`}
 										alt="Image d'aide"
-										className="max-h-30 rounded-xl mt-4 w-fit"
+										classNames="w-fit"
 									/>
 								)}
 								{question.imgCredit && (
@@ -178,10 +179,10 @@ function QuestionList() {
 									</a>
 								)}
 								{question.img?.[1] && (
-									<img
+									<LoadingImg
 										src={`/answer_img/${question.img?.[1]}`}
-										alt="Image de Rappel"
-										className="max-h-30 pt-6 border-t mt-4 border-zinc-300"
+										alt="Image d'aide"
+										classNames="pt-6 w-fit "
 									/>
 								)}
 							</div>
