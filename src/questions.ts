@@ -99,6 +99,7 @@ export const questions = [
 			"Citez un endroit où l'on peut trouver les pressions préconisées pour les pneumatiques ?",
 		answer:
 			"Elles sont indiquées : - soit sur une plaque sur une portière. - soit dans la notice d'utilisation du véhicule. - soit au niveau de la trappe à carburant.",
+		context: `(aide: il y a 3 endroits possibles. Ici, on t'en demande qu'un seul)`,
 	},
 	{
 		id: 12,
@@ -215,6 +216,7 @@ export const questions = [
 		question:
 			"Quels sont les deux autres documents obligatoires à présenter en cas de contrôle par les forces de l'ordre ?",
 		answer: "L'attestation d'assurance et le permis de conduire.",
+		context: "(autre que le certificat d'immatriculation du véhicule)",
 	},
 	{
 		id: 27,
@@ -260,6 +262,7 @@ export const questions = [
 		question:
 			"Quelles sont les précautions à prendre lors du remplissage du réservoir ?",
 		answer: "Arrêter le moteur, ne pas fumer, ne pas téléphoner.",
+		context: "(de carburant)",
 	},
 	{
 		id: 33,
@@ -842,6 +845,7 @@ export const questions = [
 			"Quels sont les deux autres documents obligatoires à présenter en cas de contrôle par les forces de l'ordre ?",
 		answer:
 			"Le certificat d'immatriculation et le permis de conduire. Le terme « carte grise » est accepté.",
+		context: "(autre que l'attestation d'assurance)",
 	},
 	{
 		id: 109,
