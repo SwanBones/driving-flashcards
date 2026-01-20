@@ -199,6 +199,20 @@ export default function Home() {
 				questions={modalQuestions}
 				isOpen={isQuestionModalOpen}
 				onCancel={handleModalCancel}
+				onPrevQuestion={() => {
+					setModalQuestionGroup(
+						questionGroups.find(
+							(qG) => qG.group_id === (modalQuestionGroup?.group_id ?? 0) - 1,
+						),
+					);
+				}}
+				onNextQuestion={() => {
+					setModalQuestionGroup(
+						questionGroups.find(
+							(qG) => qG.group_id === (modalQuestionGroup?.group_id ?? 0) + 1,
+						),
+					);
+				}}
 			/>
 			<InfoModal
 				isOpen={isInfoModalOpen}
