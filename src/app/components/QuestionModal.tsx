@@ -86,30 +86,34 @@ function QuestionModal(props: Props) {
         </Button> */}
 			</div>
 			<div className=" -mt-10 flex justify-between relative -bottom-24">
-				{questionGroup?.group_id !== 1 && (
-					<Button
-						onClick={onPrevQuestion}
-						type="text"
-						className="group !bg-black/10 !hover:bg-black/50 !p-2"
-					>
-						<LeftOutlined className="!text-zinc-50 ml-[8px]" />
-						<p className="text-transparent duration-200 group-hover:w-10 group-hover:mr-2 w-0 p-0 transition-all  group-hover:text-zinc-100">
-							#{(questionGroup?.group_id ?? 0) - 1}
-						</p>
-					</Button>
-				)}
-				{questionGroup?.group_id !== 100 && (
-					<Button
-						onClick={onNextQuestion}
-						type="text"
-						className="group !bg-black/10 !hover:bg-black/50 !p-2"
-					>
-						<p className="text-transparent duration-200 group-hover:w-10 group-hover:ml-2 w-0 p-0 transition-all  group-hover:text-zinc-100">
-							#{(questionGroup?.group_id ?? 0) + 1}
-						</p>
-						<RightOutlined className="!text-zinc-50 mr-[8px]" />
-					</Button>
-				)}
+				<div>
+					{questionGroup?.group_id !== 1 && (
+						<Button
+							onClick={onPrevQuestion}
+							type="text"
+							className="group !bg-black/10 !hover:bg-black/50 !p-2"
+						>
+							<LeftOutlined className="!text-zinc-50 ml-[8px]" />
+							<p className="text-transparent duration-200 group-hover:w-10 group-hover:mr-2 w-0 p-0 transition-all  group-hover:text-zinc-100">
+								#{(questionGroup?.group_id ?? 0) - 1}
+							</p>
+						</Button>
+					)}
+				</div>
+				<div>
+					{questionGroup?.group_id !== 100 && (
+						<Button
+							onClick={onNextQuestion}
+							type="text"
+							className="group !bg-black/10 !hover:bg-black/50 !p-2"
+						>
+							<p className="text-transparent duration-200 group-hover:w-10 group-hover:ml-2 w-0 p-0 transition-all  group-hover:text-zinc-100">
+								#{(questionGroup?.group_id ?? 0) + 1}
+							</p>
+							<RightOutlined className="!text-zinc-50 mr-[8px]" />
+						</Button>
+					)}
+				</div>
 			</div>
 		</Modal>
 	);
