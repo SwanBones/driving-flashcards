@@ -85,7 +85,7 @@ function QuestionModal(props: Props) {
             : `Révéler les réponses`}
         </Button> */}
 			</div>
-			<div className=" -mt-10 flex justify-between relative -bottom-24">
+			<div className=" -mt-10 flex justify-between relative -bottom-24 py-4">
 				<div>
 					{questionGroup?.group_id !== 1 && (
 						<Button
