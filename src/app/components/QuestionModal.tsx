@@ -89,7 +89,10 @@ function QuestionModal(props: Props) {
 				<div>
 					{questionGroup?.group_id !== 1 && (
 						<Button
-							onClick={onPrevQuestion}
+							onClick={()=>{
+								onPrevQuestion();
+								setShowAnswers([])
+										 }}
 							type="text"
 							className="group !bg-black/10 !hover:bg-black/50 !p-2"
 						>
@@ -103,7 +106,10 @@ function QuestionModal(props: Props) {
 				<div>
 					{questionGroup?.group_id !== 100 && (
 						<Button
-							onClick={onNextQuestion}
+							onClick={()=>{
+								onNextQuestion();
+								setShowAnswers([])	 
+										 }}
 							type="text"
 							className="group !bg-black/10 !hover:bg-black/50 !p-2"
 						>
