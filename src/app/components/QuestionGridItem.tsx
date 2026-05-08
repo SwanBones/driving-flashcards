@@ -11,7 +11,10 @@ type Props = {
 };
 function QuestionGridItem(props: Props) {
   const { questionGroup, onClick } = props;
-  const { checkedQuestions, uncheckQuestions } = useQuestions();
+  const uncheckQuestions = useQuestions((s) => s.uncheckQuestions);
+  const showUnfinished = useQuestions((s) => s.showUnfinished);
+  const checkedQuestions = useQuestions((s) => s.checkedQuestions);
+
   const tagClassName = "w-[5] h-[5] rounded-full";
   const allQuestions = [
     questionGroup.questions.VERIF,
@@ -26,26 +29,31 @@ function QuestionGridItem(props: Props) {
     uncheckQuestions(allQuestions);
   };
 
+  const isVisible = (question: number) =>
+    showUnfinished
+      ? !checkedQuestions.has(question)
+      : checkedQuestions.has(question);
+
   return (
     <Card hoverable className="group" onClick={() => onClick(questionGroup)}>
       <div className="justify-center items-center flex flex-col gap-2 min-w-4 ">
         {!hasCheckedQuestion && (
           <div
             onClick={handleResetGroup}
-            className="absolute hidden opacity-20 hover:opacity-50 transition-opacity duration-100 hover:flex  group-hover:flex -right-[6px] -top-[6px]  rounded-full  "
+            className="absolute hidden opacity-20 hover:opacity-50 transition-opacity duration-100 hover:flex  group-hover:flex -right-1.5 -top-1.5  rounded-full  "
           >
             <CloseCircleFilled twoToneColor="#eb2f96" />
           </div>
         )}
         <p>{questionGroup.group_id}</p>
         <div className="gap-1 flex flex-row justify-center items-center absolute bottom-4">
-          {checkedQuestions.has(questionGroup.questions.VERIF) && (
+          {isVisible(questionGroup.questions.VERIF) && (
             <div className={classNames(tagClassName, "bg-pink-300")} />
           )}
-          {checkedQuestions.has(questionGroup.questions.QSER) && (
+          {isVisible(questionGroup.questions.QSER) && (
             <div className={classNames(tagClassName, "bg-lime-500")} />
           )}
-          {checkedQuestions.has(questionGroup.questions.FirstAid) && (
+          {isVisible(questionGroup.questions.FirstAid) && (
             <div className={classNames(tagClassName, "bg-yellow-400")} />
           )}
         </div>

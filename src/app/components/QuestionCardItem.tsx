@@ -51,7 +51,6 @@ function QuestionCardItem(props: Props) {
 				<div className="flex flex-row justify-between gap-2 ">
 					<p className="font-bold">{question.question}</p>
 					{question.checked && (
-						// <CheckOutlined className="!text-lime-500" />
 						<UncheckableBox
 							checkMarkClassname={tag.checkmarkClassname}
 							onUncheck={() => uncheckQuestions([question.id])}
@@ -72,7 +71,7 @@ function QuestionCardItem(props: Props) {
 							)}
 							{question.imgCredit && (
 								<a
-									className="!text-gray-500 decoration-none italic text-xs text-center mt-2"
+									className="text-gray-500! decoration-none italic text-xs text-center mt-2"
 									target="_blank"
 									href={question.imgCredit}
 								>

@@ -8,7 +8,7 @@ type Props = {
 };
 function QuestionGrid(props: Props) {
   const { questionGroups, onItemClick } = props;
-
+  const showUnfinished = useQuestions((s) => s.showUnfinished);
   return (
     <div className="gap-2 flex flex-wrap justify-center max-w-4xl mx-auto">
       {questionGroups?.map((questionGroup, index) => {
