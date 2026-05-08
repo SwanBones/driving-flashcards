@@ -24,11 +24,11 @@ export default function RootLayout({
         />
         <link rel="icon" href="/favicon.png" sizes="any" />
       </head>
-      <Suspense>
-        <body>
+      <body>
+        <Suspense>
           <App>{children}</App>
-        </body>
-      </Suspense>
+        </Suspense>
+      </body>
     </html>
   );
 }

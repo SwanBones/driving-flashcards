@@ -1,10 +1,14 @@
 import { create } from "zustand";
-import { Question, questions } from "@/questions";
+import { Question, questions, QuestionType } from "@/questions";
 import { questionGroups } from "@/groups";
 
 export interface QuestionsState {
+  showUnfinished: boolean;
   trackQuestions: boolean;
   separateVerifs: boolean;
+  activateProgressBar: boolean;
+  setActivateProgressBar: (newBool: boolean) => void;
+  setShowUnfinished: (newBool: boolean) => void;
   setTrackQuestions: (newBool: boolean) => void;
   setSeparateVerifs: (newBool: boolean) => void;
   questions: Question[];
@@ -17,9 +21,14 @@ export interface QuestionsState {
   uncheckQuestionGroup: (id: number) => void;
 }
 
-export const useQuestions = create<QuestionsState>((set) => ({
+export const useQuestions = create<QuestionsState>((set, get) => ({
+  showUnfinished: false,
   trackQuestions: true,
   separateVerifs: false,
+  activateProgressBar: true,
+  setActivateProgressBar: (newBool) =>
+    set(() => ({ activateProgressBar: newBool })),
+  setShowUnfinished: (newBool) => set(() => ({ showUnfinished: newBool })),
   setTrackQuestions: (newBool) => set(() => ({ trackQuestions: newBool })),
   setSeparateVerifs: (newBool) => set(() => ({ separateVerifs: newBool })),
   questions: questions as Question[],
@@ -34,7 +43,7 @@ export const useQuestions = create<QuestionsState>((set) => ({
       return {
         checkedQuestions: next,
         questions: state.questions.map((q, idx) =>
-          ids.includes(idx + 1) ? { ...q, checked: true } : q
+          ids.includes(idx + 1) ? { ...q, checked: true } : q,
         ),
       };
     }),
@@ -47,7 +56,7 @@ export const useQuestions = create<QuestionsState>((set) => ({
       return {
         checkedQuestions: next,
         questions: state.questions.map((q, idx) =>
-          ids.includes(idx + 1) ? { ...q, checked: false } : q
+          ids.includes(idx + 1) ? { ...q, checked: false } : q,
         ),
       };
     }),
@@ -55,14 +64,14 @@ export const useQuestions = create<QuestionsState>((set) => ({
   checkQuestionGroup: (id) =>
     set((state) => ({
       questions: state.questions.map((q, idx) =>
-        idx === id - 1 ? { ...q, checked: true } : q
+        idx === id - 1 ? { ...q, checked: true } : q,
       ),
     })),
 
   uncheckQuestionGroup: (id) =>
     set((state) => ({
       questions: state.questions.map((q, idx) =>
-        idx === id - 1 ? { ...q, checked: false } : q
+        idx === id - 1 ? { ...q, checked: false } : q,
       ),
     })),
 }));
