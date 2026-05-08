@@ -132,9 +132,14 @@ export default function Home() {
     const params = new URLSearchParams(searchParams.toString());
     params.set("saveData", value);
     localStorage.setItem("saveData", value);
-    router.replace(`${window.location.pathname}?${params.toString()}`, {
-      scroll: false,
-    });
+    // router.replace(`${window.location.pathname}?${params.toString()}`, {
+    //   scroll: false,
+    // });
+    window.history.replaceState(
+      null,
+      "",
+      `${window.location.pathname}?${params.toString()}`,
+    );
   };
 
   return (
