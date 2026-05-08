@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { useQuestions } from "../stores/questionStore";
-import { QuestionType } from "@/questions";
-import { useShallow } from "zustand/react/shallow";
 import { useQuestionStats } from "../hooks/useQuestionStats";
 import { cn } from "../utils/cn";
 import { Tooltip } from "antd";
