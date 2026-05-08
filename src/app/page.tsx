@@ -126,7 +126,7 @@ export default function Home() {
     setIsQuestionModalOpen(false);
     setModalQuestionGroup(null);
   };
-  const router = useRouter();
+  // const router = useRouter();
 
   const updateQuery = (value: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -173,12 +173,12 @@ export default function Home() {
       </div>
       {!hideGrid && (
         <div className="max-w-6xl flex flex-col items-center gap-8 ">
-          <h1 className="text-center">Groupes de questions</h1>
-          <p className="text-xs text-zinc-400 italic -mt-7 text-center">
-            {easterEgg ??
-              "Les questions se répètent beaucoup. Descends pour les questions individuelles!"}
-          </p>
-          <div className="w-full px-10">
+          <div className="w-full px-10 gap-8 flex flex-col">
+            <h1 className="text-center">Groupes de questions</h1>
+            <p className="text-xs text-zinc-400 italic -mt-7 text-center">
+              {easterEgg ??
+                "Les questions se répètent beaucoup. Descends pour les questions individuelles!"}
+            </p>
             <Stats />
           </div>
           <div className="bg-zinc-100 rounded-xl p-2 sm:p-10 flex flex-col items-center">
@@ -200,7 +200,7 @@ export default function Home() {
         </div>
       )}
       {!hideList && (
-        <div className="max-w-6xl flex flex-col items-center gap-8 ">
+        <div className="max-w-6xl flex flex-col items-center gap-8 px-10 ">
           <h1 className="mt-4 text-center">Questions uniques</h1>
           <p className="text-xs text-zinc-400 italic -mt-7 text-center">
             Toutes les questions, regroupées
